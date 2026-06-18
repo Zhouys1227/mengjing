@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>瀵绘壘澶辫惤鐨勬ⅵ澧?/title>
+<title>寻找失落的梦境</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:'STSong','SimSun','Songti SC',serif;touch-action:none;user-select:none;-webkit-user-select:none}
 #starfield{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
 
-/* ======== 寮€绡囧彊浜?======== */
+/* ======== 开篇叙事 ======== */
 #intro-overlay{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 2s}
 #intro-overlay.fade-out{opacity:0;pointer-events:none}
 #intro-bg{position:absolute;inset:0;background:url(%E5%BA%95%E5%9B%BE.png) center/cover no-repeat;z-index:0;opacity:.88}
@@ -26,7 +26,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 .intro-tap.visible{color:rgba(255,210,120,.6);opacity:1;animation:tapPulse 2.5s ease-in-out infinite}
 @keyframes tapPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 
-/* ======== 鐢诲嵎涓婚〉 ======== */
+/* ======== 画卷主页 ======== */
 #scroll-home{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 1.5s ease;pointer-events:none}
 #scroll-home.active{opacity:1;pointer-events:auto}
 #scroll-canvas{position:absolute;top:0;left:0;width:100%;height:100%}
@@ -40,7 +40,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 .scroll-sec-dot{width:8px;height:8px;border-radius:50%;background:rgba(200,160,100,.2);margin:8px auto 0;transition:all .4s}
 .scroll-sec.active .scroll-sec-dot{background:rgba(255,210,110,.9);box-shadow:0 0 18px rgba(255,180,60,.8);width:12px;height:12px}
 
-/* ======== 绔犺妭 ======== */
+/* ======== 章节 ======== */
 .chapter{position:fixed;inset:0;z-index:10;display:none;pointer-events:none}
 .chapter.active{display:block;pointer-events:auto}
 
@@ -111,27 +111,28 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 <body>
 <canvas id="starfield"></canvas>
 
-<div id="intro-overlay"><div id="intro-bg"></div><div id="intro-card"><div class="intro-title">瀵绘壘澶辫惤鐨勬ⅵ澧?/div><div class="intro-body"></div><div class="intro-tap">杞昏Е鎴栨彙鎷宠繘鍏ユⅵ澧?/div></div></div>
+<div id="intro-overlay"><div id="intro-bg"></div><div id="intro-card"><div class="intro-title">寻找失落的梦境</div><div class="intro-body"></div><div class="intro-tap">轻触或握拳进入梦境</div></div></div>
 
-<!-- 绾櫧寮曞椤?-->
+<!-- 纯白引导页 -->
 <div id="white-intro" style="position:fixed;inset:0;z-index:510;background:#faf8f4;display:none;flex-direction:column;align-items:center;justify-content:center;transition:opacity 2s">
-  <div id="white-title" style="color:rgba(180,140,40,.9);font-size:clamp(28px,5vw,44px);font-weight:bold;letter-spacing:8px;text-shadow:0 0 12px rgba(200,150,60,.5);opacity:0;transition:opacity 2s;margin-bottom:50px">浣犳兂杩涘叆鎬庢牱鐨勬ⅵ澧冿紵</div>
+  <div id="white-title" style="color:rgba(180,140,40,.9);font-size:clamp(28px,5vw,44px);font-weight:bold;letter-spacing:8px;text-shadow:0 0 12px rgba(200,150,60,.5);opacity:0;transition:opacity 2s;margin-bottom:50px">你想进入怎样的梦境？</div>
   <div id="white-guide" style="max-width:500px;text-align:center;line-height:2.4;color:rgba(160,120,60,.8);font-size:clamp(14px,2vw,18px);letter-spacing:3px;opacity:0;transition:opacity 1.5s">
-    寮犲紑鎵嬪乏鍙虫粦鍔?鎺㈢储鐢诲嵎<br>
-    鍗曟墜鎻℃嫵 杩涘叆閫夊畾鍏冲崱<br>
-    瀹屾垚姣忎釜鍏冲崱鐨勬寫鎴?br>
-    鎵惧洖閬楀け鐨勬ⅵ澧冪鐗?  </div>
-  <div id="white-tap" style="margin-top:50px;color:rgba(160,120,60,.5);font-size:14px;letter-spacing:4px;opacity:0;transition:opacity 1.5s;cursor:pointer">杞昏Е鎴栨彙鎷宠繘鍏?/div>
+    张开手左右滑动 探索画卷<br>
+    单手握拳 进入选定关卡<br>
+    完成每个关卡的挑战<br>
+    找回遗失的梦境碎片
+  </div>
+  <div id="white-tap" style="margin-top:50px;color:rgba(160,120,60,.5);font-size:14px;letter-spacing:4px;opacity:0;transition:opacity 1.5s;cursor:pointer">轻触或握拳进入</div>
 </div>
 
 <div id="scroll-home">
   <canvas id="scroll-canvas"></canvas>
-    <div class="scroll-title">浣犳兂杩涘叆鎬庢牱鐨勬ⅵ澧冿紵</div>
-  <div class="scroll-hint">鈫?婊戝姩鐢诲嵎鎺㈢储 鈫?鍗曟墜鎻℃嫵杩涘叆鍏冲崱</div>
+    <div class="scroll-title">你想进入怎样的梦境？</div>
+  <div class="scroll-hint">← 滑动画卷探索 → 单手握拳进入关卡</div>
   <div class="scroll-sections">
-    <div class="scroll-sec" id="sec0"><div>鏃嬭浆鏈ㄩ┈</div><div class="scroll-sec-dot"></div></div>
-    <div class="scroll-sec" id="sec1"><div>闈欓粯闊崇</div><div class="scroll-sec-dot"></div></div>
-    <div class="scroll-sec" id="sec2"><div>瀛旀槑涔嬬伅</div><div class="scroll-sec-dot"></div></div>
+    <div class="scroll-sec" id="sec0"><div>旋转木马</div><div class="scroll-sec-dot"></div></div>
+    <div class="scroll-sec" id="sec1"><div>静默音符</div><div class="scroll-sec-dot"></div></div>
+    <div class="scroll-sec" id="sec2"><div>孔明之灯</div><div class="scroll-sec-dot"></div></div>
   </div>
   <canvas id="fist-ring" width="80" height="80" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:310;pointer-events:none;opacity:0;transition:opacity .3s"></canvas>
 </div>
@@ -145,13 +146,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 <video id="cam-video" playsinline autoplay style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1"></video>
 <div id="cam-window"><video id="cam-preview" playsinline autoplay muted></video></div>
 <canvas id="hand-canvas"></canvas>
-<div id="gesture-indicator"><span class="gesture-emoji" id="gesture-emoji">馃枑</span><div class="gesture-dots" id="gesture-dots"><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div></div><span class="gesture-label" id="gesture-label"></span></div>
+<div id="gesture-indicator"><span class="gesture-emoji" id="gesture-emoji">🖐</span><div class="gesture-dots" id="gesture-dots"><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div><div class="gesture-dot"></div></div><span class="gesture-label" id="gesture-label"></span></div>
 
 <div id="win-overlay"><div id="win-text"></div><div class="win-divider"></div><div class="win-sub"></div><div class="win-btns" id="win-btns"></div></div>
 <div class="hint-bar" id="hint-bar"></div>
 
 <script>
-// 灏濊瘯澶氫釜CDN鍔犺浇MediaPipe
+// 尝试多个CDN加载MediaPipe
 window._mpFailed=false;
 (function(){
   const urls=[
@@ -160,18 +161,18 @@ window._mpFailed=false;
   ];
   let idx=0;
   function tryLoad(){
-    if(idx>=urls.length){window._mpFailed=true;console.warn('鎵€鏈塁DN鍔犺浇澶辫触锛屾墜鍔夸笉鍙敤');return}
+    if(idx>=urls.length){window._mpFailed=true;console.warn('所有CDN加载失败，手势不可用');return}
     const s=document.createElement('script');
     s.src=urls[idx];
     s.onerror=()=>{idx++;tryLoad()};
-    s.onload=()=>{console.log('MediaPipe鍔犺浇鎴愬姛:',urls[idx])};
+    s.onload=()=>{console.log('MediaPipe加载成功:',urls[idx])};
     document.head.appendChild(s);
   }
   tryLoad();
 })();
 </script>
 <script>
-// ==================== 鏄熺┖ ====================
+// ==================== 星空 ====================
 const sC=document.getElementById('starfield'),sx=sC.getContext('2d');
 let W,H,stars=[],shs=[];
 function rSC(){W=sC.width=innerWidth;H=sC.height=innerHeight}rSC();addEventListener('resize',rSC);
@@ -180,13 +181,13 @@ class ShootingStar{constructor(){this.reset(true)}reset(f){this.x=Math.random()*
 for(let i=0;i<280;i++)stars.push(new Star());
 function aS(){sx.fillStyle='rgba(20,12,6,.25)';sx.fillRect(0,0,W,H);stars.forEach(s=>{s.u();s.d()});requestAnimationFrame(aS)}aS();
 
-// ==================== 宸ュ叿 ====================
+// ==================== 工具 ====================
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 function typeText(el,t,d=80){return new Promise(r=>{el.innerHTML='';for(let i=0;i<t.length;i++){const s=document.createElement('span');s.className='char';if(t[i]==='\n')s.innerHTML='<br>';else s.textContent=t[i];el.appendChild(s)}let idx=0;(function n(){if(idx<el.children.length){el.children[idx].classList.add('show');idx++;setTimeout(n,d)}else r()})()})}
 function spawnP(x,y,n,cs){for(let i=0;i<n;i++){const el=document.createElement('div');el.className='particle';const s=Math.random()*4+2;el.style.width=s+'px';el.style.height=s+'px';el.style.left=x+'px';el.style.top=y+'px';el.style.background=cs[Math.floor(Math.random()*cs.length)];el.style.boxShadow=`0 0 ${s*2}px ${cs[Math.floor(Math.random()*cs.length)]}`;document.body.appendChild(el);const a=Math.random()*Math.PI*2,sp=2+Math.random()*4;let vx=Math.cos(a)*sp,vy=Math.sin(a)*sp,o=1,lf=0;(function an(){lf++;el.style.left=(parseFloat(el.style.left)+vx)+'px';el.style.top=(parseFloat(el.style.top)+vy)+'px';vy+=.08;vx*=.98;o-=.018;el.style.opacity=o;if(o>0&&lf<80)requestAnimationFrame(an);else el.remove()})()}}
 const PCS=['#a8d8ff','#ffd6a8','#ffb8d0','#c8b8ff','#a8ffe8'];
 
-// ==================== 鎽勫儚澶?鎵嬪娍 ====================
+// ==================== 摄像头+手势 ====================
 const hC=document.getElementById('hand-canvas'),hx=hC.getContext('2d');
 const cW=document.getElementById('cam-window'),cP=document.getElementById('cam-preview'),cV=document.getElementById('cam-video');
 const gI=document.getElementById('gesture-indicator'),gE=document.getElementById('gesture-emoji'),gD=document.getElementById('gesture-dots'),gL=document.getElementById('gesture-label');
@@ -201,24 +202,24 @@ function getXY(lm){if(!lm)return{x:0,y:0};let cx=0,cy=0;for(const i of[4,8,12,16
 function onHR(r){if(!r.multiHandLandmarks||r.multiHandLandmarks.length===0){hL=null;h2L=null;eF=0;eF2=0;isFist1=false;isFist2=false;return}hL=r.multiHandLandmarks[0];eF=countF(hL);isFist1=detectFist(hL);hCtr=getXY(hL);if(r.multiHandLandmarks.length>1){h2L=r.multiHandLandmarks[1];eF2=countF(h2L);isFist2=detectFist(h2L);h2Ctr=getXY(h2L)}else{h2L=null;eF2=0;isFist2=false}}
 async function initH(){if(typeof Hands==='undefined')throw new Error('MP');hI=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/${f}`});hI.setOptions({maxNumHands:2,modelComplexity:1,minDetectionConfidence:.5,minTrackingConfidence:.3});hI.onResults(onHR);sD();return true}
 function sD(){if(dI){clearTimeout(dI);dI=null}(async function l(){if(!camR){dI=setTimeout(l,500);return}if(cV.readyState>=2&&hI){try{await hI.send({image:cV})}catch(e){}}dI=setTimeout(l,50)})()}
-function uGI(){if(!camR||!handR){gI.classList.remove('visible');return}gI.classList.add('visible');const tf=eF+eF2;gE.textContent=tf>=6?'馃げ':tf>=4?'馃枑':tf>=2?'鉁岋笍':'馃枑';const ds=gD.children;for(let i=0;i<5;i++)ds[i].classList.toggle('active',i<Math.min(5,tf));gL.textContent=gameState==='scroll'?((isFist1||isFist2)?'鎻℃嫵杩涘叆鍏冲崱':'寮犲紑鎵嬫粦鍔ㄦ帰绱?):gameState==='ch2'?'鎷傝繃鐞村鸡寮瑰':eF>=2?'鍙互鎶撳彇纰庣墖':eF>=1?'鍐嶄几涓€鏍规墜鎸?:'浼稿嚭鎵嬫寚'}
+function uGI(){if(!camR||!handR){gI.classList.remove('visible');return}gI.classList.add('visible');const tf=eF+eF2;gE.textContent=tf>=6?'🤲':tf>=4?'🖐':tf>=2?'✌️':'🖐';const ds=gD.children;for(let i=0;i<5;i++)ds[i].classList.toggle('active',i<Math.min(5,tf));gL.textContent=gameState==='scroll'?((isFist1||isFist2)?'握拳进入关卡':'张开手滑动探索'):gameState==='ch2'?'拂过琴弦弹奏':eF>=2?'可以抓取碎片':eF>=1?'再伸一根手指':'伸出手指'}
 function dHS(){hx.clearRect(0,0,hC.width,hC.height);hC.width=innerWidth;hC.height=innerHeight;const W=innerWidth,H=innerHeight;function dH(lm){if(!lm)return;const conn=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];hx.strokeStyle='rgba(140,210,240,.5)';hx.lineWidth=2;hx.lineCap='round';for(const[a,b]of conn){hx.beginPath();hx.moveTo((1-lm[a].x)*W,lm[a].y*H);hx.lineTo((1-lm[b].x)*W,lm[b].y*H);hx.stroke()}const tC=['#ff9966','#66bbff','#88dd88','#ffdd66','#ff88cc'];for(let i=0;i<5;i++){const idx=[4,8,12,16,20][i],x=(1-lm[idx].x)*W,y=lm[idx].y*H,gl=hx.createRadialGradient(x,y,0,x,y,12);gl.addColorStop(0,tC[i].replace(')','.8)'));gl.addColorStop(.5,tC[i].replace(')','.3)'));gl.addColorStop(1,'transparent');hx.fillStyle=gl;hx.beginPath();hx.arc(x,y,15,0,Math.PI*2);hx.fill()}for(const l of lm){hx.fillStyle='rgba(255,240,200,.7)';hx.beginPath();hx.arc((1-l.x)*W,l.y*H,2.5,0,Math.PI*2);hx.fill()}}dH(hL);dH(h2L)}
 function startCamOnClick(){if(!camR&&!handR)sG()}
 async function sG(){
-  // 鍏堝惎鍔ㄦ憚鍍忓ご
-  gL.textContent='鍚姩鎽勫儚澶?..';
+  // 先启动摄像头
+  gL.textContent='启动摄像头...';
   const ok=await initCam();
-  if(!ok){gL.textContent='鎽勫儚澶翠笉鍙敤';return}
-  // 绛夊緟MediaPipe鍔犺浇
-  gL.textContent='鍔犺浇鎵嬪娍搴?..';
+  if(!ok){gL.textContent='摄像头不可用';return}
+  // 等待MediaPipe加载
+  gL.textContent='加载手势库...';
   let waited=0;
   while(typeof Hands==='undefined'&&!window._mpFailed&&waited<50){await sleep(200);waited++}
-  if(window._mpFailed||typeof Hands==='undefined'){gL.textContent='鎵嬪娍搴撴湭鍔犺浇锛屼粎榧犳爣';return}
-  try{await initH();handR=true;gL.textContent='鎵嬪娍灏辩华'}catch(e){console.warn(e);gL.textContent='鎵嬪娍鍔犺浇澶辫触锛屼粎榧犳爣'}
+  if(window._mpFailed||typeof Hands==='undefined'){gL.textContent='手势库未加载，仅鼠标';return}
+  try{await initH();handR=true;gL.textContent='手势就绪'}catch(e){console.warn(e);gL.textContent='手势加载失败，仅鼠标'}
 }
 setTimeout(()=>{sG()},500);
 
-// ==================== 鍏ㄥ眬榧犳爣杩借釜 ====================
+// ==================== 全局鼠标追踪 ====================
 let gameState='intro';
 let mouse={x:-500,y:-500,down:false};
 document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;if(gameState==='ch1'&&dP)c1M(e.clientX,e.clientY)});
@@ -228,10 +229,10 @@ document.addEventListener('touchmove',e=>{const t=e.touches[0];mouse.x=t.clientX
 document.addEventListener('touchend',()=>{mouse.down=false;if(dP)c1E()});
 document.addEventListener('touchstart',e=>{const t=e.touches[0];mouse.down=true},{passive:false});
 
-// ==================== 绔犺妭绠＄悊 ====================
+// ==================== 章节管理 ====================
 function switchCh(n){document.querySelectorAll('.chapter').forEach(c=>c.classList.remove('active'));document.getElementById('ch'+n).classList.add('active')}
 
-// ==================== 鐢诲嵎涓婚〉 ====================
+// ==================== 画卷主页 ====================
 const scrollCanvas=document.getElementById('scroll-canvas'),scCtx=scrollCanvas.getContext('2d');
 const scrollHome=document.getElementById('scroll-home');
 const fistRing=document.getElementById('fist-ring'),frCtx=fistRing.getContext('2d');
@@ -241,12 +242,12 @@ let scrollDragging=false,scrollDragSX=0,scrollDragVX=0;
 let scrollTotalW=0,fistHold=0,fistNeedRelease=false;
 const FIST_HOLD=50;
 let storyPopup=true,storyAlpha=1,storyDismissing=false;
-const STORY_TEXT=['寮犲紑鎵嬪乏鍙虫粦鍔?路 鎺㈢储鐢诲嵎','鍗曟墜鎻℃嫵 路 杩涘叆閫夊畾鍏冲崱','','鏃嬭浆鏈ㄩ┈ 路 鎷煎浘褰掍綅','闈欓粯闊崇 路 寮瑰鏃嬪緥','瀛旀槑涔嬬伅 路 鐐逛寒绁濇効','','瀹屾垚姣忎釜鍏冲崱鐨勬寫鎴?,'鎵惧洖閬楀け鐨勬ⅵ澧冪鐗?];
+const STORY_TEXT=['张开手左右滑动 · 探索画卷','单手握拳 · 进入选定关卡','','旋转木马 · 拼图归位','静默音符 · 弹奏旋律','孔明之灯 · 点亮祝愿','','完成每个关卡的挑战','找回遗失的梦境碎片'];
 
 const scrollImgEl=new Image();
 scrollImgEl.onload=()=>{scrollReady=true;scrollTotalW=scrollImgEl.width*(innerHeight/scrollImgEl.height);scrollX=-(scrollTotalW-innerWidth)/2;scrollTargetX=scrollX};
-scrollImgEl.onerror=()=>{if(scrollImgEl.src.indexOf('%')===-1)scrollImgEl.src='鐢诲嵎.png'};
-scrollImgEl.src='鐢诲嵎.png';
+scrollImgEl.onerror=()=>{if(scrollImgEl.src.indexOf('%')===-1)scrollImgEl.src='画卷.png'};
+scrollImgEl.src='画卷.png';
 
 function getScrollSec(){if(!scrollReady)return 1;const maxRange=Math.max(scrollTotalW-innerWidth,innerWidth*.45)+50;const seg=(maxRange+50)/3;if(scrollX>50-seg)return 0;if(scrollX>50-seg*2)return 1;return 2}
 
@@ -259,7 +260,8 @@ document.addEventListener('touchend',()=>{scrollDragging=false});
 
 function updateScroll(){
   if(gameState!=='scroll')return;
-  // 鏁呬簨寮圭獥锛氭彙鎷虫敹涓?  if(storyPopup){document.querySelector('.scroll-sections').style.opacity=storyDismissing?storyAlpha:'0';document.querySelector('.scroll-hint').style.opacity=storyDismissing?storyAlpha:'0'}
+  // 故事弹窗：握拳收下
+  if(storyPopup){document.querySelector('.scroll-sections').style.opacity=storyDismissing?storyAlpha:'0';document.querySelector('.scroll-hint').style.opacity=storyDismissing?storyAlpha:'0'}
   if(storyPopup&&!storyDismissing){const af=(isFist1&&!!hL)||(isFist2&&!!h2L);if(af){fistHold++;if(fistHold>20){storyDismissing=true;fistHold=-30}}else{fistHold=Math.max(0,fistHold-3)};return}
   if(!scrollDragging&&hL&&!isFist1&&eF>=1){
     const hx0=hCtr.x,ew=innerWidth*.3;
@@ -271,15 +273,16 @@ function updateScroll(){
   scrollX=Math.max(-maxRange,Math.min(50,scrollX));
   const sec=getScrollSec();
   for(let i=0;i<3;i++)document.getElementById('sec'+i).classList.toggle('active',i===sec);
-  const secNames=['鏃嬭浆鏈ㄩ┈','闈欓粯闊崇','瀛旀槑涔嬬伅'];
+  const secNames=['旋转木马','静默音符','孔明之灯'];
   const doneFlags=[ch1Done,ch2Done,ch3Done];
-  let hintText=`褰撳墠锛?{secNames[sec]}`;
-  if(doneFlags[sec])hintText+=' 鉁?宸插畬鎴?;
-  else hintText+=' 路 寰呭畬鎴?路 鍗曟墜鎻℃嫵杩涘叆';
+  let hintText=`当前：${secNames[sec]}`;
+  if(doneFlags[sec])hintText+=' ✓ 已完成';
+  else hintText+=' · 待完成 · 单手握拳进入';
   document.querySelector('.scroll-hint').textContent=hintText;
-  // 鏇存柊鍖哄煙鏍囩棰滆壊
+  // 更新区域标签颜色
   for(let i=0;i<3;i++){const el=document.getElementById('sec'+i);if(doneFlags[i]){el.style.color='rgba(255,200,80,.95)';el.querySelector('.scroll-sec-dot').style.background='rgba(255,200,80,.9)'}else{el.style.color='';el.querySelector('.scroll-sec-dot').style.background=''}}
-  // 鏃ヨ鍖哄煙鎵嬮潬杩戝彂鍏夋娴?  const dr=window._diaryRect;let near=false;
+  // 日记区域手靠近发光检测
+  const dr=window._diaryRect;let near=false;
   if(dr){if(hL){const dx=hCtr.x-(dr.left+dr.width/2);const dy=hCtr.y-(dr.top+dr.height/2);if(Math.abs(dx)<dr.width*.7&&Math.abs(dy)<dr.height*.7)near=true}if(h2L&&!near){const dx=h2Ctr.x-(dr.left+dr.width/2);const dy=h2Ctr.y-(dr.top+dr.height/2);if(Math.abs(dx)<dr.width*.7&&Math.abs(dy)<dr.height*.7)near=true}}
   window._diaryNear=near;
   const anyFist=(isFist1&&!!hL)||(isFist2&&!!h2L);
@@ -287,7 +290,7 @@ function updateScroll(){
   if(anyFist&&!fistNeedRelease){fistHold++;fistRing.style.opacity='1'}else{fistHold=Math.max(0,fistHold-3);if(fistHold<=0)fistRing.style.opacity='0'}
   if(fistHold>=FIST_HOLD){fistHold=0;fistRing.style.opacity='0';enterChapter(sec)}
 }
-const DIARY_TEXT=['      6鏈?鏃? 鏅?,'','浠婂ぉ鎴戝張鏉ュ埌浜嗛偅鐗囬噾鑹茬殑妫灄閲岋紝鏍戜笂鐨勫彾瀛?,'閮藉彉鎴愪簡浼氬敱姝岀殑灏忔槦鏄燂紝涓€棰椾竴棰椾粠鏋濆ご钀戒笅鏉ワ紝','钀藉湪鎴戠殑鎵嬪績閲屾殩鏆栫殑锛屽儚涓€灏忓洟钀ょ伀铏棯闂彂鍏夈€?,'','鎴戣蛋鍟婅蛋璧板晩璧帮紝鐪嬭浜嗕竴搴уソ澶уソ澶х殑鏃嬭浆鏈ㄩ┈銆?,'瀹冨凡缁忓畬鍏ㄤ笉杞簡锛屼笂闈㈢殑灏忛┈浠兘鍦ㄥ畨闈欏湴鐫¤锛?,'楝冩瘺涓婅惤婊′簡缁嗙粏鐨勯摱鑹叉槦鍏夛紝鍍忔拻浜嗕竴灞傜硸闇溿€?,'','鎴戣交杞绘懜浜嗘懜瀹冪殑澶达紝瀹冨ソ鍍忕瑧浜嗕竴涓嬶紝鐪肩潧閲屼寒璧?,'浜嗕竴鐐圭偣寰厜锛岀劧鍚庢參鎱㈠湴鎱㈡參鍦帮紝寮€濮嬭浆鍔ㄨ捣鏉ワ紝','鏈ㄩ┈涓婄殑褰╃伅涔熶竴鐩忔帴涓€鐩忓湴浜簡璧锋潵锛屽ソ婕備寒鍟娿€?,'','鍐嶅線鍓嶈蛋鎴戝惉鍒颁簡缁嗙粏鐨勮蒋杞殑澹伴煶锛屽儚鏄湁浜哄湪','涓€鎶婄湅涓嶈鐨勫皬鎻愮惔涓婇潰鎷夌潃涓€棣栧畨鐪犳洸锛屽０闊冲ソ杞?,'濂借交锛屽儚濡堝鍦ㄦ垜鑰宠竟璇磋瘽锛屽張鍍忔櫄椋庣┛杩囨爲鍙跺彂鍑?,'娌欐矙鐨勫０闊筹紝杩樺儚灏忔椂鍊欐憞绡竟閭ｉ瀹夊績鐨勬瓕璋ｃ€?,'','妫灄鐨勫敖澶存湁涓€鎵囧彜鑰佺殑闂ㄩ棬涓婄敾婊′簡寮集鏇叉洸鐨?,'鑺辩汗锛屽儚鏄棨钄撳張鍍忔槸鏌愮鎴戠湅涓嶅お鎳傜殑鍙よ€佹枃瀛楋紝','浣嗘垜鐭ラ亾闂ㄥ悗闈竴瀹氳棌鐫€寰堥噸瑕佺殑涓滆タ锛屼篃璁告槸閭ｄ簺','琚垜閬楀繕鍦ㄦ椂鍏夐噷鐨勬渶鐝嶈吹鐨勫洖蹇嗭紝闂棯鍙戝厜鐨勯偅绉嶃€?,'','鎴戞兂鎺ㄥ紑瀹冭繘鍘荤湅涓€鐪嬮偅鎵囬棬鐨勫悗闈㈢┒绔熸槸涓嶆槸姊?,'寮€濮嬬殑鍦版柟锛岄偅閲屼細涓嶄細鏈夋洿澶氫細鍞辨瓕鐨勬槦鏄熷拰浼氶鐨?,'鏈ㄩ┈锛屾垜濂芥兂鐭ラ亾锛屾槑澶╂垜杩樿鍐嶆潵杩欓噷缁х画鎺㈤櫓銆?];
+const DIARY_TEXT=['      6月4日  晴','','今天我又来到了那片金色的森林里，树上的叶子','都变成了会唱歌的小星星，一颗一颗从枝头落下来，','落在我的手心里暖暖的，像一小团萤火虫闪闪发光。','','我走啊走走啊走，看见了一座好大好大的旋转木马。','它已经完全不转了，上面的小马们都在安静地睡觉，','鬃毛上落满了细细的银色星光，像撒了一层糖霜。','','我轻轻摸了摸它的头，它好像笑了一下，眼睛里亮起','了一点点微光，然后慢慢地慢慢地，开始转动起来，','木马上的彩灯也一盏接一盏地亮了起来，好漂亮啊。','','再往前走我听到了细细的软软的声音，像是有人在','一把看不见的小提琴上面拉着一首安眠曲，声音好轻','好轻，像妈妈在我耳边说话，又像晚风穿过树叶发出','沙沙的声音，还像小时候摇篮边那首安心的歌谣。','','森林的尽头有一扇古老的门门上画满了弯弯曲曲的','花纹，像是藤蔓又像是某种我看不太懂的古老文字，','但我知道门后面一定藏着很重要的东西，也许是那些','被我遗忘在时光里的最珍贵的回忆，闪闪发光的那种。','','我想推开它进去看一看那扇门的后面究竟是不是梦','开始的地方，那里会不会有更多会唱歌的星星和会飞的','木马，我好想知道，明天我还要再来这里继续探险。'];
 
 function drawScroll(){
   if(!scrollReady)return;
@@ -298,9 +301,9 @@ function drawScroll(){
   scCtx.drawImage(scrollImgEl,scrollX,0,iw,ih);
   if(scrollX>0){const eg=scCtx.createLinearGradient(0,0,scrollX,0);eg.addColorStop(0,'#f0ebe0');eg.addColorStop(1,'rgba(240,235,224,0)');scCtx.fillStyle=eg;scCtx.fillRect(0,0,scrollX,innerHeight)}
   const re=scrollX+iw;if(re<innerWidth){const eg=scCtx.createLinearGradient(re,0,innerWidth,0);eg.addColorStop(0,'rgba(240,235,224,0)');eg.addColorStop(1,'#f0ebe0');scCtx.fillStyle=eg;scCtx.fillRect(re,0,innerWidth-re,innerHeight)}
-  // 鏃ヨ鏂囧瓧鐢诲湪鐢诲嵎鍙充晶绌虹櫧澶?闅忕敾鍗锋粴鍔?
+  // 日记文字画在画卷右侧空白处(随画卷滚动)
   const diaryX=scrollX+iw+20;
-  const diaryW=Math.min(innerWidth-diaryX-15,280); // 鍗犳弧绌虹櫧澶勶紝鏈€澶?80px
+  const diaryW=Math.min(innerWidth-diaryX-15,280); // 占满空白处，最大280px
   if(diaryX>0&&diaryX<innerWidth&&diaryW>60){
     const near=window._diaryNear||false;
     scCtx.save();
@@ -320,13 +323,14 @@ function drawScroll(){
     scCtx.restore();
     window._diaryRect={left:diaryX,top:startY,width:diaryW,height:DIARY_TEXT.length*lineH};
   }
-  // 鏁呬簨寮圭獥
+  // 故事弹窗
   if(storyPopup){
     if(storyDismissing){storyAlpha-=.02;if(storyAlpha<=0){storyPopup=false;storyDismissing=false;storyAlpha=1;document.querySelector('.scroll-sections').style.opacity='1';document.querySelector('.scroll-hint').style.opacity='1';sC.style.display='block'}}
     const floatY=Math.sin(Date.now()*.002)*5;
     scCtx.save();scCtx.fillStyle=`rgba(0,0,0,${.7*storyAlpha})`;scCtx.fillRect(0,0,innerWidth,innerHeight);
     const cW=Math.min(innerWidth*.82,650),cH=innerHeight*.8,cX=(innerWidth-cW)/2,cY=(innerHeight-cH)/2+floatY;
-    // 姘旀场鍦ㄥ浘鐗囧悗闈?    const bx=cX+cW/2,by=cY+cH-65;for(let i=0;i<3;i++){scCtx.fillStyle=`rgba(200,150,80,${storyAlpha*.4})`;scCtx.beginPath();scCtx.arc(bx-16+i*16,by,5,0,Math.PI*2);scCtx.fill()}
+    // 气泡在图片后面
+    const bx=cX+cW/2,by=cY+cH-65;for(let i=0;i<3;i++){scCtx.fillStyle=`rgba(200,150,80,${storyAlpha*.4})`;scCtx.beginPath();scCtx.arc(bx-16+i*16,by,5,0,Math.PI*2);scCtx.fill()}
     scCtx.shadowColor='rgba(0,0,0,.5)';scCtx.shadowBlur=40;scCtx.shadowOffsetY=8;
     if(endBgImg.complete&&endBgImg.naturalWidth>0)scCtx.drawImage(endBgImg,cX,cY,cW,cH);
     else{scCtx.fillStyle='#f5f0e8';scCtx.fillRect(cX,cY,cW,cH)}
@@ -335,11 +339,11 @@ function drawScroll(){
     scCtx.fillStyle=`rgba(200,160,80,${storyAlpha})`;scCtx.font='bold 26px STKaiti,KaiTi,STSong,serif';scCtx.textAlign='left';
     const totalH2=STORY_TEXT.length*38,sY2=cY+(cH-totalH2)/2;scCtx.textAlign='center';
     for(let li=0;li<STORY_TEXT.length;li++)scCtx.fillText(STORY_TEXT[li],cX+cW/2,sY2+li*38);
-    // 鏀朵笅鎸夐挳
+    // 收下按钮
     const rbx=cX+cW/2,rby=cY+cH-55;scCtx.fillStyle=`rgba(60,25,10,${.85*storyAlpha})`;
     scCtx.beginPath();scCtx.moveTo(rbx-85+22,rby-20);scCtx.lineTo(rbx+85-22,rby-20);scCtx.arcTo(rbx+85,rby-20,rbx+85,rby-20+22,22);scCtx.lineTo(rbx+85,rby+20-22);scCtx.arcTo(rbx+85,rby+20,rbx+85-22,rby+20,22);scCtx.lineTo(rbx-85+22,rby+20);scCtx.arcTo(rbx-85,rby+20,rbx-85,rby+20-22,22);scCtx.lineTo(rbx-85,rby-20+22);scCtx.arcTo(rbx-85,rby-20,rbx-85+22,rby-20,22);scCtx.closePath();scCtx.fill();
     scCtx.strokeStyle='rgba(200,150,60,.5)';scCtx.lineWidth=2;scCtx.stroke();
-    scCtx.fillStyle=`rgba(255,220,160,${storyAlpha})`;scCtx.font='bold 22px STSong,serif';scCtx.textAlign='center';scCtx.fillText('鏀?涓?,rbx,rby+8);
+    scCtx.fillStyle=`rgba(255,220,160,${storyAlpha})`;scCtx.font='bold 22px STSong,serif';scCtx.textAlign='center';scCtx.fillText('收 下',rbx,rby+8);
     scCtx.restore();
   }
 }
@@ -352,9 +356,9 @@ function drawFistRing(){
 function enterChapter(sec){
   console.log('enterChapter sec='+sec+' totalW='+scrollTotalW+' scrollX='+scrollX+' vc='+(-scrollX+innerWidth/2)+' sw='+(scrollTotalW/3));
   scrollHome.classList.remove('active');scrollDragging=false;fistHold=0;fistRing.style.opacity='0';
-  if(sec===0){gameState='ch1';ch1P.forEach(p=>{if(p.el)p.el.remove()});ch1P=[];dP=null;gP=null;ch1W=false;document.getElementById('ch1-board').classList.remove('visible','complete');switchCh(1);ch1Init();document.getElementById('ch1-guide').classList.add('visible');typeText(document.getElementById('ch1-guide'),'浣犺蛋鍦ㄦⅵ澧冪殑鑽夊湴涓婏紝鐪嬭涓€搴ф矇鐫＄殑鏃嬭浆鏈ㄩ┈銆傚畠鐨勫厜鑺掑緢寰急锛屽洜涓哄お涔呮病鏈変汉鏉ョ偣浜畠浜嗐€傝繖鏄綘绔ュ勾鐨勬父涔愬満锛屼綘鏇剧粡鍦ㄨ繖閲岀瑧杩囥€侀椆杩囷紝閭ｄ簺蹇箰锛岄兘钘忓湪鏈ㄩ┈鐨勬槦鍏夐噷銆?,90);document.getElementById('hint-bar').textContent='鎷栧姩纰庣墖鎷煎悎鍥剧墖';setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
-  else if(sec===1){gameState='ch2';ch2Cleanup();switchCh(2);ch2Started=false;ch2Init();document.getElementById('hint-bar').textContent='榧犳爣鎴栨墜鎸囨媯杩囩惔寮?;setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
-  else if(sec===2){gameState='ch3';ch3W=false;ch3Lanterns=[];ch3LitCount=0;ch3PrevOpen=false;switchCh(3);ch3Init();document.getElementById('hint-bar').textContent='寮犲紑鎵嬪啀鎻℃嫵鐐逛寒瀛旀槑鐏?;setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
+  if(sec===0){gameState='ch1';ch1P.forEach(p=>{if(p.el)p.el.remove()});ch1P=[];dP=null;gP=null;ch1W=false;document.getElementById('ch1-board').classList.remove('visible','complete');switchCh(1);ch1Init();document.getElementById('ch1-guide').classList.add('visible');typeText(document.getElementById('ch1-guide'),'你走在梦境的草地上，看见一座沉睡的旋转木马。它的光芒很微弱，因为太久没有人来点亮它了。这是你童年的游乐场，你曾经在这里笑过、闹过，那些快乐，都藏在木马的星光里。',90);document.getElementById('hint-bar').textContent='拖动碎片拼合图片';setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
+  else if(sec===1){gameState='ch2';ch2Cleanup();switchCh(2);ch2Started=false;ch2Init();document.getElementById('hint-bar').textContent='鼠标或手指拂过琴弦';setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
+  else if(sec===2){gameState='ch3';ch3W=false;ch3Lanterns=[];ch3LitCount=0;ch3PrevOpen=false;switchCh(3);ch3Init();document.getElementById('hint-bar').textContent='张开手再握拳点亮孔明灯';setTimeout(()=>document.getElementById('hint-bar').classList.add('visible'),500)}
 }
 function returnToScroll(){
   document.getElementById('win-overlay').classList.remove('show');
@@ -368,8 +372,8 @@ function returnToScroll(){
 }
 function ch2Cleanup(){ch2W=false;ch2St=[];ch2Rp=[];ch2NoteStep=0;ch2Hints=[];ch2Started=false;document.getElementById('ch2-bg').className='';document.getElementById('ch2-bg').style.backgroundImage='';document.getElementById('ch2-prompt').textContent='';document.getElementById('ch2-guide').classList.remove('visible');document.getElementById('ch2-guide').innerHTML=''}
 
-// ==================== 绗竴绔狅細鎷煎浘 ====================
-const ROWS=3,COLS=3,IMG1='images/鏈ㄩ┈.png';
+// ==================== 第一章：拼图 ====================
+const ROWS=3,COLS=3,IMG1='images/木马.png';
 const hEs=[['tab','blank','tab'],['blank','tab','blank']],vEs=[['blank','tab','blank'],['tab','blank','tab']];
 function opp(t){if(t==='tab')return'blank';if(t==='blank')return'tab';return'flat'}
 function gEs(r,c){return{top:r===0?'flat':opp(hEs[r-1][c]),bottom:r===ROWS-1?'flat':hEs[r][c],left:c===0?'flat':opp(vEs[c-1][r]),right:c===COLS-1?'flat':vEs[c][r]}}
@@ -382,12 +386,12 @@ function sDg(el,p){const s=(ex,ey)=>{if(p.sn)return;if(gP&&gP!==p)return;if(gP==
 function c1M(ex,ey){if(!dP)return;dP.x=ex-dOX;dP.y=ey-dOY;dP.el.style.left=dP.x+'px';dP.el.style.top=dP.y+'px'}
 function c1E(){if(!dP)return;const p=dP;p.el.classList.remove('dragging');c1S(p);if(!p.sn)p.el.classList.add('floating');dP=null;c1W()}
 function c1S(p){const h=document.getElementById('ch1-board'),hr=h.getBoundingClientRect(),tcx=hr.left+p.tX+p.pw/2,tcy=hr.top+p.tY+p.ph/2,pcx=p.x+p.eW/2,pcy=p.y+p.eH/2;if(Math.sqrt((pcx-tcx)**2+(pcy-tcy)**2)<Math.min(p.pw,p.ph)*.38){p.sn=true;p.el.classList.remove('floating');p.x=hr.left+p.tX-p.ov;p.y=hr.top+p.tY-p.ov;p.el.style.transition='left .35s cubic-bezier(.34,1.56,.64,1), top .35s cubic-bezier(.34,1.56,.64,1)';p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';p.el.classList.add('snapped');spawnP(tcx,tcy,16,PCS);setTimeout(()=>{if(p.el)p.el.style.transition=''},400)}}
-async function c1W(){if(ch1W)return;if(ch1P.length>0&&ch1P.every(p=>p.sn)){ch1W=true;document.getElementById('ch1-guide').classList.remove('visible');document.getElementById('ch1-board').classList.add('complete');await sleep(1200);const ov=document.getElementById('win-overlay');ov.classList.add('show');await sleep(600);const wt=document.getElementById('win-text');await typeText(wt,'浣犺交杞荤浜嗙鏈ㄩ┈锛屽畠閱掍簡杩囨潵锛屽甫鐫€浣犵殑蹇箰锛屾參鎱㈡棆杞捣鏉ャ€?,130);await sleep(800);document.querySelector('.win-divider').classList.add('visible');await sleep(600);document.querySelector('.win-sub').textContent='鍋滄粸鐨勪箰鍥紝宸茶浣犲敜閱?;document.querySelector('.win-sub').classList.add('visible');document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">杩斿洖鐢诲嵎</button><button class="win-btn" onclick="replayCh1()">鍐嶆浣撻獙</button>';for(let i=0;i<60;i++)setTimeout(()=>spawnP(Math.random()*innerWidth,Math.random()*innerHeight*.7,8,PCS),i*30)}}
-function replayCh1(){ch1W=false;ch1P.forEach(p=>{if(p.el)p.el.remove()});ch1P=[];dP=null;gP=null;document.getElementById('win-overlay').classList.remove('show');document.getElementById('ch1-board').classList.remove('complete');ch1Init();document.getElementById('ch1-guide').classList.add('visible');typeText(document.getElementById('ch1-guide'),'浣犺蛋鍦ㄦⅵ澧冪殑鑽夊湴涓婏紝鐪嬭涓€搴ф矇鐫＄殑鏃嬭浆鏈ㄩ┈銆傚畠鐨勫厜鑺掑緢寰急锛屽洜涓哄お涔呮病鏈変汉鏉ョ偣浜畠浜嗐€傝繖鏄綘绔ュ勾鐨勬父涔愬満锛屼綘鏇剧粡鍦ㄨ繖閲岀瑧杩囥€侀椆杩囷紝閭ｄ簺蹇箰锛岄兘钘忓湪鏈ㄩ┈鐨勬槦鍏夐噷銆?,90)}
+async function c1W(){if(ch1W)return;if(ch1P.length>0&&ch1P.every(p=>p.sn)){ch1W=true;document.getElementById('ch1-guide').classList.remove('visible');document.getElementById('ch1-board').classList.add('complete');await sleep(1200);const ov=document.getElementById('win-overlay');ov.classList.add('show');await sleep(600);const wt=document.getElementById('win-text');await typeText(wt,'你轻轻碰了碰木马，它醒了过来，带着你的快乐，慢慢旋转起来。',130);await sleep(800);document.querySelector('.win-divider').classList.add('visible');await sleep(600);document.querySelector('.win-sub').textContent='停滞的乐园，已被你唤醒';document.querySelector('.win-sub').classList.add('visible');document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">返回画卷</button><button class="win-btn" onclick="replayCh1()">再次体验</button>';for(let i=0;i<60;i++)setTimeout(()=>spawnP(Math.random()*innerWidth,Math.random()*innerHeight*.7,8,PCS),i*30)}}
+function replayCh1(){ch1W=false;ch1P.forEach(p=>{if(p.el)p.el.remove()});ch1P=[];dP=null;gP=null;document.getElementById('win-overlay').classList.remove('show');document.getElementById('ch1-board').classList.remove('complete');ch1Init();document.getElementById('ch1-guide').classList.add('visible');typeText(document.getElementById('ch1-guide'),'你走在梦境的草地上，看见一座沉睡的旋转木马。它的光芒很微弱，因为太久没有人来点亮它了。这是你童年的游乐场，你曾经在这里笑过、闹过，那些快乐，都藏在木马的星光里。',90)}
 function rG(){if(!gP)return;const p=gP;p.el.classList.remove('dragging');c1S(p);if(!p.sn)p.el.classList.add('floating');gP=null;c1W()}
 
-// ==================== 绗簩绔狅細瀹夌湢鏇?====================
-const IMG2='images/灏忔彁鐞?png';
+// ==================== 第二章：安眠曲 ====================
+const IMG2='images/小提琴.png';
 const NOTE_NAMES=['C','D','E','F','G','A','B'];
 const LULLABY_FREQ=[261.63,293.66,329.63,349.23,392.00,440.00,493.88];
 const LULLABY=[0,2,4,2,0,5,3,1,4,2,0,1,2,0];
@@ -398,10 +402,10 @@ const ch2Img=new Image();ch2Img.onload=()=>{ch2R=true};ch2Img.src=encodeURI(IMG2
 function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)()}
 function playLullabyNote(freq){if(!audioCtx)return;const t=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.22,t+.08);g.gain.exponentialRampToValueAtTime(.001,t+1.5);o.start(t);o.stop(t+1.5)}
 function playFullLullaby(){if(!audioCtx)return;LULLABY.forEach((si,i)=>{setTimeout(()=>playLullabyNote(LULLABY_FREQ[si]),i*700)})}
-function ch2Init(){if(ch2Started)return;console.log('ch2Init called, ch2Started was false');ch2Started=true;initAudio();ch2St=[];ch2Rp=[];ch2W=false;ch2NoteStep=0;ch2Hints=[];document.getElementById('ch2-bg').style.backgroundImage=`url(${encodeURI(IMG2)})`;document.getElementById('ch2-bg').className='';const W=innerWidth,H=innerHeight;const pos=[{y:H*.22,x1:W*.08,x2:W*.35},{y:H*.32,x1:W*.25,x2:W*.55},{y:H*.18,x1:W*.50,x2:W*.78},{y:H*.48,x1:W*.06,x2:W*.40},{y:H*.55,x1:W*.30,x2:W*.70},{y:H*.42,x1:W*.52,x2:W*.85},{y:H*.70,x1:W*.15,x2:W*.60}];for(let i=0;i<7;i++)ch2St.push({idx:i,y:pos[i].y,x1:pos[i].x1,x2:pos[i].x2,name:NOTE_NAMES[i],pl:0,vb:0,cd:0});ch2UpdateHint();ch2SP('璺熼殢閲戣壊鍏夌偣 路 濂忓搷瀹夌湢鏇?);const guide=document.getElementById('ch2-guide');guide.classList.add('visible');typeText(guide,'澹伴煶鏁ｈ惤鍦ㄥ瘋闈欎腑鈥︹€﹁窡闅忛噾鑹插厜鐐癸紝濂忓搷涓€鏀俯鏌旂殑瀹夌湢鏇层€?,90)}
+function ch2Init(){if(ch2Started)return;console.log('ch2Init called, ch2Started was false');ch2Started=true;initAudio();ch2St=[];ch2Rp=[];ch2W=false;ch2NoteStep=0;ch2Hints=[];document.getElementById('ch2-bg').style.backgroundImage=`url(${encodeURI(IMG2)})`;document.getElementById('ch2-bg').className='';const W=innerWidth,H=innerHeight;const pos=[{y:H*.22,x1:W*.08,x2:W*.35},{y:H*.32,x1:W*.25,x2:W*.55},{y:H*.18,x1:W*.50,x2:W*.78},{y:H*.48,x1:W*.06,x2:W*.40},{y:H*.55,x1:W*.30,x2:W*.70},{y:H*.42,x1:W*.52,x2:W*.85},{y:H*.70,x1:W*.15,x2:W*.60}];for(let i=0;i<7;i++)ch2St.push({idx:i,y:pos[i].y,x1:pos[i].x1,x2:pos[i].x2,name:NOTE_NAMES[i],pl:0,vb:0,cd:0});ch2UpdateHint();ch2SP('跟随金色光点 · 奏响安眠曲');const guide=document.getElementById('ch2-guide');guide.classList.add('visible');typeText(guide,'声音散落在寂静中……跟随金色光点，奏响一支温柔的安眠曲。',90)}
 function ch2SP(t){document.getElementById('ch2-prompt').textContent=t}
 function ch2NP(x,y){for(let i=0;i<5;i++){const el=document.createElement('div');el.className='ch2-note-particle';el.style.left=x+'px';el.style.top=y+'px';el.style.width=(3+Math.random()*6)+'px';el.style.height=el.style.width;el.style.background=`rgba(${Math.random()<.5?'255,255,255':'255,220,160'},.9)`;el.style.boxShadow='0 0 10px rgba(255,220,140,.7)';document.body.appendChild(el);let vy=-(3+Math.random()*6),vx=(Math.random()-.5)*3,o=1,lf=0;(function an(){lf++;el.style.left=(parseFloat(el.style.left)+vx)+'px';el.style.top=(parseFloat(el.style.top)+vy)+'px';vy+=.05;o-=.025;el.style.opacity=o;if(o>0&&lf<50)requestAnimationFrame(an);else el.remove()})()}
-  // 涓婂崌鏄熷厜绮掑瓙
+  // 上升星光粒子
   const star=document.createElement('div');star.className='ch2-note-particle';
   star.style.left=x+'px';star.style.top=y+'px';star.style.width='4px';star.style.height='4px';
   star.style.background='rgba(255,255,240,1)';star.style.boxShadow='0 0 8px rgba(255,240,180,.9),0 0 20px rgba(255,220,100,.5)';
@@ -411,46 +415,50 @@ function ch2NP(x,y){for(let i=0;i<5;i++){const el=document.createElement('div');
     svy*=.98;svx+=Math.sin(slf*.1)*.05;so-=.012;star.style.opacity=so;star.style.transform=`scale(${1+Math.sin(slf*.2)*.4})`;
     if(so>0&&slf<80)requestAnimationFrame(san);else star.remove()})();}
 function ch2RP(x,y){for(let i=0;i<3;i++)ch2Rp.push({x,y,r:0,mR:40+Math.random()*70+60*i,lf:0,mL:40+Math.random()*50,phase:Math.random()*Math.PI*2});ch2Rp.push({x,y,r:0,mR:25,lf:0,mL:30,dark:true})}
-function ch2UpdateHint(){if(ch2NoteStep>=TOTAL_NOTES){ch2W=true;ch2OC();return}ch2Hints=[];const n=Math.min(8,TOTAL_NOTES-ch2NoteStep);for(let j=0;j<n;j++){const step=ch2NoteStep+j,si=LULLABY[step],s=ch2St[si];ch2Hints.push({x:(s.x1+s.x2)/2,y:s.y,strIdx:si,life:0,played:false,floatY:0,floatPhase:0,isCurrent:j===0})}ch2SP(`馃幍 寮瑰 ${NOTE_NAMES[LULLABY[ch2NoteStep]]} 寮?路 闊崇 ${ch2NoteStep+1}/${TOTAL_NOTES}`)}
+function ch2UpdateHint(){if(ch2NoteStep>=TOTAL_NOTES){ch2W=true;ch2OC();return}ch2Hints=[];const n=Math.min(8,TOTAL_NOTES-ch2NoteStep);for(let j=0;j<n;j++){const step=ch2NoteStep+j,si=LULLABY[step],s=ch2St[si];ch2Hints.push({x:(s.x1+s.x2)/2,y:s.y,strIdx:si,life:0,played:false,floatY:0,floatPhase:0,isCurrent:j===0})}ch2SP(`🎵 弹奏 ${NOTE_NAMES[LULLABY[ch2NoteStep]]} 弦 · 音符 ${ch2NoteStep+1}/${TOTAL_NOTES}`)}
 function ch2Up(){if(gameState!=='ch2'||!ch2Started)return;const handVelY=hCtr.y-prevHCtr.y;const mouseVelY=mouse.y-prevMouseY;for(const s of ch2St){if(s.cd>0)s.cd--;if(s.vb>0)s.vb--;if(s.pluckY){s.pluckY*=.55;if(Math.abs(s.pluckY)<.3)s.pluckY=0}}const pts=[];if(hL)pts.push({x:hCtr.x,y:hCtr.y,vel:handVelY});if(h2L)pts.push({x:h2Ctr.x,y:h2Ctr.y,vel:0});if(mouse.x>0&&mouse.y>0)pts.push({x:mouse.x,y:mouse.y,vel:mouseVelY});for(const s of ch2St){if(s.cd>0)continue;for(const pt of pts){if(Math.abs(pt.y-s.y)<40&&pt.x>s.x1&&pt.x<s.x2){s.pl++;s.vb=15;s.cd=12;s.pluckY=Math.max(-20,Math.min(20,pt.vel*1.2));ch2NP(pt.x,pt.y);ch2RP(pt.x,pt.y);playLullabyNote(LULLABY_FREQ[s.idx]);if(ch2Hints.length>0){const h=ch2Hints[0];if(h.isCurrent&&!h.played&&s.idx===h.strIdx){h.played=true;ch2NoteStep++;setTimeout(()=>ch2UpdateHint(),500)}}const bg=document.getElementById('ch2-bg'),pct=ch2NoteStep/TOTAL_NOTES;if(pct>.2&&!bg.classList.contains('awakening'))bg.classList.add('awakening');if(pct>.5&&!bg.classList.contains('awake'))bg.classList.add('awake');break}}}for(const h of ch2Hints){h.life+=.03;if(h.played){h.floatY-=1.2;h.floatPhase+=.08}}}
-async function ch2OC(){ch2SP('鉁?瀹夌湢鏇插凡濂忓搷...');document.getElementById('ch2-bg').classList.add('awake');playFullLullaby();for(let i=0;i<50;i++)setTimeout(()=>ch2RP(innerWidth*.2+Math.random()*innerWidth*.6,innerHeight*.2+Math.random()*innerHeight*.6),i*30);for(let i=0;i<70;i++)setTimeout(()=>{const s=ch2St[Math.floor(Math.random()*7)];ch2NP((s.x1+s.x2)/2+(Math.random()-.5)*200,s.y+Math.random()*30-15)},i*15);await sleep(4000);const ov=document.getElementById('win-overlay');ov.classList.add('show');await sleep(600);const wt=document.getElementById('win-text');await typeText(wt,'浣犲敜閱掍簡娌夌潯鐨勬棆寰嬶紝姊﹀涓殑澹伴煶锛岀粓浜庡洖鏉ヤ簡銆?,130);await sleep(800);document.querySelector('.win-divider').classList.add('visible');await sleep(600);document.querySelector('.win-sub').textContent='闈欓粯鐨勯煶绗︼紝宸茶浣犲鍝?;document.querySelector('.win-sub').classList.add('visible');document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">杩斿洖鐢诲嵎</button><button class="win-btn" onclick="replayCh2()">鍐嶆浣撻獙</button>';}
+async function ch2OC(){ch2SP('✨ 安眠曲已奏响...');document.getElementById('ch2-bg').classList.add('awake');playFullLullaby();for(let i=0;i<50;i++)setTimeout(()=>ch2RP(innerWidth*.2+Math.random()*innerWidth*.6,innerHeight*.2+Math.random()*innerHeight*.6),i*30);for(let i=0;i<70;i++)setTimeout(()=>{const s=ch2St[Math.floor(Math.random()*7)];ch2NP((s.x1+s.x2)/2+(Math.random()-.5)*200,s.y+Math.random()*30-15)},i*15);await sleep(4000);const ov=document.getElementById('win-overlay');ov.classList.add('show');await sleep(600);const wt=document.getElementById('win-text');await typeText(wt,'你唤醒了沉睡的旋律，梦境中的声音，终于回来了。',130);await sleep(800);document.querySelector('.win-divider').classList.add('visible');await sleep(600);document.querySelector('.win-sub').textContent='静默的音符，已被你奏响';document.querySelector('.win-sub').classList.add('visible');document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">返回画卷</button><button class="win-btn" onclick="replayCh2()">再次体验</button>';}
 function replayCh2(){ch2W=false;ch2St=[];ch2Rp=[];ch2NoteStep=0;ch2Hints=[];ch2Started=false;document.getElementById('win-overlay').classList.remove('show');document.getElementById('ch2-bg').className='';ch2Init()}
 
-// ==================== 绗笁绔狅細瀛旀槑涔嬬伅锛堣鎰?瀛旀槑鐏級====================
-let ch3PrayerPhase=0,ch3PrayerTimer=0,ch3PrayerKongY=0; // 0=绛夊緟鍚堝崄,1=鐐逛寒鍊掕鏃?2=瀹屾垚
-const LANTERN_MSGS=['鎰夸綘瀹夊ソ','澶╁ぉ寮€蹇?,'涓€鍒囬『鍒?,'骞冲钩瀹夊畨','缇庢ⅵ鎴愮湡','姘歌繙骞哥'];
+// ==================== 第三章：孔明之灯（许愿+孔明灯）====================
+let ch3PrayerPhase=0,ch3PrayerTimer=0,ch3PrayerKongY=0; // 0=等待合十,1=点亮倒计时,2=完成
+const LANTERN_MSGS=['愿你安好','天天开心','一切顺利','平平安安','美梦成真','永远幸福'];
 const LANTERN_MEMORIES=[
-  '鎯冲ぉ澶╁悆鍒扮敎鐢滅殑绯栨灉锛屽拰灏忕嫍涓€璧峰湪澶栫帺鑰?,
-  '甯屾湜闀垮嚭灏忕繀鑶€锛岄鍒颁簯鏈典笂闈㈢湅鏄熸槦鏈堜寒',
-  '涓嶇敤鍐欏ソ澶氫綔涓氾紝姣忓ぉ閮借兘鍘婚儕澶栨斁椋庣瓭',
-  '鎯宠涓€鏁寸洅褰╄湣绗旓紝鐢诲嚭婊″北濂界湅鐨勫皬鑺?,
-  '鎰垮浜烘案杩滀笉鐢熺梾锛屾瘡鏅氶兘鑳介櫔鐫€璁叉晠浜?,
-  '鍏讳竴鍙俯椤哄皬鍏斿瓙锛岄櫔鐫€鎴戝害杩囨槬澶忕鍐?
+  '想天天吃到甜甜的糖果，和小狗一起在外玩耍',
+  '希望长出小翅膀，飞到云朵上面看星星月亮',
+  '不用写好多作业，每天都能去郊外放风筝',
+  '想要一整盒彩蜡笔，画出满山好看的小花',
+  '愿家人永远不生病，每晚都能陪着讲故事',
+  '养一只温顺小兔子，陪着我度过春夏秋冬'
 ];
-let ch3MemoryText=null,ch3MemoryAlpha=0,ch3MemoryTimer=0; // 褰撳墠鏄剧ず鐨勮蹇?let ch3Lanterns=[],ch3W=false,ch3PrevOpen=false,ch3LitCount=0,ch3Stars=[],ch3KongImg=null;
+let ch3MemoryText=null,ch3MemoryAlpha=0,ch3MemoryTimer=0; // 当前显示的记忆
+let ch3Lanterns=[],ch3W=false,ch3PrevOpen=false,ch3LitCount=0,ch3Stars=[],ch3KongImg=null;
 (function(){const i=new Image();i.onload=()=>{ch3KongImg=i};i.src='KONG.png'})();
 function ch3InitStars(){ch3Stars=[];for(let i=0;i<60;i++){ch3Stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.5+Math.random()*2,ba:.3+Math.random()*.6,ts:.01+Math.random()*.03,tp:Math.random()*Math.PI*2,vy:-.1-Math.random()*.3})}}
 function ch3Init(){
   ch3Lanterns=[];ch3W=false;ch3PrevOpen=false;ch3LitCount=0;ch3InitStars();
-  ch3PrayerPhase=0;ch3PrayerTimer=0;ch3PrayerKongY=0; // 璁告効鐘舵€?  document.getElementById('ch3-board').classList.remove('visible','complete');
+  ch3PrayerPhase=0;ch3PrayerTimer=0;ch3PrayerKongY=0; // 许愿状态
+  document.getElementById('ch3-board').classList.remove('visible','complete');
   const W=innerWidth,H=innerHeight;
-  // 涓嶈鍒欐暎钀戒綅缃?  const pos=[{x:W*.08,y:H*.52},{x:W*.35,y:H*.68},{x:W*.72,y:H*.48},{x:W*.15,y:H*.82},{x:W*.55,y:H*.58},{x:W*.88,y:H*.75}];
+  // 不规则散落位置
+  const pos=[{x:W*.08,y:H*.52},{x:W*.35,y:H*.68},{x:W*.72,y:H*.48},{x:W*.15,y:H*.82},{x:W*.55,y:H*.58},{x:W*.88,y:H*.75}];
   for(let i=0;i<6;i++)ch3Lanterns.push({x:pos[i].x,y:pos[i].y,w:240+Math.random()*80,h:270+Math.random()*70,lit:false,bright:0,rise:0,riseY:0,riseX:0,breath:Math.random()*Math.PI*2,msg:LANTERN_MSGS[i],memory:LANTERN_MEMORIES[i]});
   document.getElementById('ch3-guide').classList.add('visible');
-  typeText(document.getElementById('ch3-guide'),'瀛旀槑鐏粠澶滆壊涓紦缂撳崌璧枫€傚紶寮€鎵嬪啀鎻℃嫵锛岀偣浜畠浠惂銆?,90);
+  typeText(document.getElementById('ch3-guide'),'孔明灯从夜色中缓缓升起。张开手再握拳，点亮它们吧。',90);
 }
 function ch3Update(){
   if(gameState!=='ch3')return;
-  // === 璁告効闃舵 ===
+  // === 许愿阶段 ===
   if(ch3PrayerPhase<2){
     const bothHands=!!hL&&!!h2L;const handsClose=bothHands&&Math.hypot(hCtr.x-h2Ctr.x,hCtr.y-h2Ctr.y)<120;
     if(ch3PrayerPhase===0){
-      if(handsClose){ch3PrayerPhase=1;ch3PrayerTimer=1500} // 鐐逛寒锛屽€掕鏃?    }else if(ch3PrayerPhase===1){
+      if(handsClose){ch3PrayerPhase=1;ch3PrayerTimer=1500} // 点亮，倒计时
+    }else if(ch3PrayerPhase===1){
       ch3PrayerTimer--;if(ch3PrayerTimer<=0){ch3PrayerPhase=2;ch3PrayerKongY=0}
     }
-    return; // 璁告効涓紝涓嶈繍琛屾甯搁€昏緫
+    return; // 许愿中，不运行正常逻辑
   }
-  // === 姝ｅ父瀛旀槑鐏€昏緫 ===
+  // === 正常孔明灯逻辑 ===
   for(const s of ch3Stars){s.y+=s.vy;s.x+=(Math.random()-.5)*.2;if(s.y<-10){s.y=innerHeight+10;s.x=Math.random()*innerWidth}}
   const open1=!isFist1&&!!hL&&eF>=1,open2=!isFist2&&!!h2L&&eF2>=1;
   const nowOpen=open1||open2;const nowFist=(isFist1&&!!hL)||(isFist2&&!!h2L);
@@ -460,66 +468,71 @@ function ch3Update(){
     if(bi>=0){const l=ch3Lanterns[bi];l.lit=true;ch3LitCount++;ch3MemoryText=l.memory;ch3MemoryAlpha=0;ch3MemoryTimer=0;spawnP(l.x,l.y,20,PCS);if(ch3LitCount>=6&&!ch3W){ch3W=true;setTimeout(()=>ch3Complete(),1000)}}
   }
   ch3PrevOpen=nowOpen&&!nowFist;
-  // 鐏鍔ㄧ敾
+  // 灯笼动画
   for(const l of ch3Lanterns){
-    if(l.lit&&l.bright<1)l.bright+=.005; // 鏇存參鍙樹寒
-    if(l.lit&&l.bright>=.98&&l.rise<1)l.rise+=.0008; // 鏇存參寮€濮嬩笂鍗?    if(l.rise>0){l.riseY-=l.rise*1.2;l.riseX+=Math.sin(l.rise*3+l.breath)*.4;} // 鑷劧椋樺崌
+    if(l.lit&&l.bright<1)l.bright+=.005; // 更慢变亮
+    if(l.lit&&l.bright>=.98&&l.rise<1)l.rise+=.0008; // 更慢开始上升
+    if(l.rise>0){l.riseY-=l.rise*1.2;l.riseX+=Math.sin(l.rise*3+l.breath)*.4;} // 自然飘升
     l.breath+=.015;
   }
 }
 function ch3Draw(){
   if(gameState!=='ch3')return;
-  // 璁板繂鏂囧瓧鍔ㄧ敾
+  // 记忆文字动画
   if(ch3MemoryText){ch3MemoryTimer++;if(ch3MemoryTimer<40)ch3MemoryAlpha=Math.min(1,ch3MemoryTimer/30);else if(ch3MemoryTimer>340)ch3MemoryAlpha=Math.max(0,1-(ch3MemoryTimer-340)/80);else ch3MemoryAlpha=1;if(ch3MemoryTimer>420){ch3MemoryText=null;ch3MemoryAlpha=0}}
-  // === 璁告効娓叉煋 ===
+  // === 许愿渲染 ===
   if(ch3PrayerPhase<2){hx.save();hx.fillStyle='rgba(5,3,2,.85)';hx.fillRect(0,0,innerWidth,innerHeight);
     const kw=180,kh=200,kx=innerWidth/2,ky=innerHeight/2+ch3PrayerKongY;
-    // KONG鐏?    if(ch3KongImg&&ch3KongImg.complete){hx.drawImage(ch3KongImg,kx-kw/2,ky-kh,kw,kh)}
+    // KONG灯
+    if(ch3KongImg&&ch3KongImg.complete){hx.drawImage(ch3KongImg,kx-kw/2,ky-kh,kw,kh)}
     else{hx.fillStyle='rgba(200,150,80,.5)';hx.beginPath();hx.ellipse(kx,ky-kh/2,kw/2,kh/2.5,0,0,Math.PI*2);hx.fill()}
     if(ch3PrayerPhase===1){const glow=hx.createRadialGradient(kx,ky-kh*.3,0,kx,ky-kh*.2,kw*1.5);glow.addColorStop(0,'rgba(255,220,100,.7)');glow.addColorStop(1,'rgba(255,150,20,0)');hx.fillStyle=glow;hx.beginPath();hx.arc(kx,ky-kh*.2,kw*1.5,0,Math.PI*2);hx.fill()}
-    // 鏂囧瓧
+    // 文字
     hx.fillStyle='rgba(220,180,100,.9)';hx.font='bold 20px STSong,serif';hx.textAlign='center';hx.shadowColor='rgba(200,150,60,.5)';hx.shadowBlur=8;
-    if(ch3PrayerPhase===0)hx.fillText('鍙屾墜鍚堝崄 路 灏濊瘯璁镐釜鎰挎湜鍚э紒',kx,ky+kh*.5);
-    else{hx.fillStyle='rgba(255,220,120,.9)';hx.font='bold 60px STSong,serif';hx.fillText(Math.ceil(ch3PrayerTimer/250),kx,ky+kh*.4);hx.font='bold 18px STSong,serif';hx.fillText(ch3PrayerTimer<=250?'璁告効鎴愬姛':'',kx,ky+kh*.6)}
+    if(ch3PrayerPhase===0)hx.fillText('双手合十 · 尝试许个愿望吧！',kx,ky+kh*.5);
+    else{hx.fillStyle='rgba(255,220,120,.9)';hx.font='bold 60px STSong,serif';hx.fillText(Math.ceil(ch3PrayerTimer/250),kx,ky+kh*.4);hx.font='bold 18px STSong,serif';hx.fillText(ch3PrayerTimer<=250?'许愿成功':'',kx,ky+kh*.6)}
     hx.shadowBlur=0;hx.restore();return}
-  // 鏄熷厜绮掑瓙
+  // 星光粒子
   hx.save();
   for(const s of ch3Stars){const a=.3+Math.sin(Date.now()*.003+s.tp)*.3;hx.fillStyle=`rgba(255,220,160,${a})`;hx.beginPath();hx.arc(s.x,s.y,s.r,0,Math.PI*2);hx.fill()}
   hx.restore();
-  // 瀛旀槑鐏?  for(const l of ch3Lanterns){
+  // 孔明灯
+  for(const l of ch3Lanterns){
     const bx=l.x+l.riseX,by=l.y+l.riseY,bw=l.w,bh=l.h+(l.lit?l.bright*15:0);
-    const breathGlow=1+Math.sin(l.breath*.8)*.2; // 缂撴參鍛煎惛鐏?    const ba=l.lit?.3+breathGlow*.5:.15;
+    const breathGlow=1+Math.sin(l.breath*.8)*.2; // 缓慢呼吸灯
+    const ba=l.lit?.3+breathGlow*.5:.15;
     hx.save();hx.globalAlpha=Math.max(.25,ba);
-    // 閲戣壊杈圭紭鍏夎姃
+    // 金色边缘光芒
     if(l.lit){
       const eg=hx.createRadialGradient(bx,by-bh*.3,bw*.3,bx,by-bh*.2,bw*1.6);
       eg.addColorStop(0,`rgba(255,240,150,${breathGlow*.8})`);eg.addColorStop(.3,`rgba(255,200,60,${breathGlow*.5})`);
       eg.addColorStop(.7,`rgba(255,150,20,${breathGlow*.2})`);eg.addColorStop(1,'rgba(255,100,10,0)');
       hx.fillStyle=eg;hx.beginPath();hx.arc(bx,by-bh*.2,bw*1.6,0,Math.PI*2);hx.fill();
     }
-    // KONG鍥剧墖
+    // KONG图片
     if(ch3KongImg&&ch3KongImg.complete){hx.drawImage(ch3KongImg,bx-bw/2,by-bh,bw,bh+l.bright*15)}
     else{hx.fillStyle=l.lit?`rgba(255,200,80,${ba})`:'rgba(180,150,100,.35)';hx.beginPath();hx.ellipse(bx,by-bh/2,bw/2,bh/2.5,0,0,Math.PI*2);hx.fill()}
-    // 闂€欐枃瀛?    if(l.lit&&l.bright>.3){hx.fillStyle=`rgba(255,240,200,${l.bright})`;hx.font='bold 16px STSong,SimSun,serif';hx.textAlign='center';hx.shadowColor='rgba(255,200,100,.8)';hx.shadowBlur=14;hx.fillText(l.msg,bx,by-bh*.45);hx.shadowBlur=0}
+    // 问候文字
+    if(l.lit&&l.bright>.3){hx.fillStyle=`rgba(255,240,200,${l.bright})`;hx.font='bold 16px STSong,SimSun,serif';hx.textAlign='center';hx.shadowColor='rgba(255,200,100,.8)';hx.shadowBlur=14;hx.fillText(l.msg,bx,by-bh*.45);hx.shadowBlur=0}
     hx.restore();
   }
-  // 璁板繂鏂囧瓧灞呬腑鏄剧ず
+  // 记忆文字居中显示
   if(ch3MemoryText&&ch3MemoryAlpha>0){hx.fillStyle=`rgba(255,240,200,${ch3MemoryAlpha})`;hx.font='bold 40px STKaiti,KaiTi,STSong,serif';hx.textAlign='center';hx.shadowColor='rgba(255,200,80,.5)';hx.shadowBlur=8;const words=ch3MemoryText.split('');let line='';const maxW=innerWidth*.75;const lines=[];for(const ch of words){const t=line+ch;if(hx.measureText(t).width>maxW&&line.length>0){lines.push(line);line=ch}else line=t}if(line)lines.push(line);for(let i=0;i<lines.length;i++)hx.fillText(lines[i],innerWidth/2,innerHeight*.42+i*55);hx.shadowBlur=0}
 }
 async function ch3Complete(){
   document.getElementById('ch3-board').classList.add('complete');
   for(let i=0;i<80;i++)setTimeout(()=>spawnP(Math.random()*innerWidth,Math.random()*innerHeight*.7,10,PCS),i*20);
   await sleep(2500);const ov=document.getElementById('win-overlay');ov.classList.add('show');await sleep(600);
-  const wt=document.getElementById('win-text');await typeText(wt,'鍏洀瀛旀槑鐏紦缂撳崌璧凤紝娓╂殩鐨勫厜鐓т寒浜嗚蹇嗕箣闂ㄣ€傞偅浜涜閬楀繕鐨勮繃寰€锛岄兘娑屼笂蹇冨ご銆?,130);
+  const wt=document.getElementById('win-text');await typeText(wt,'六盏孔明灯缓缓升起，温暖的光照亮了记忆之门。那些被遗忘的过往，都涌上心头。',130);
   await sleep(800);document.querySelector('.win-divider').classList.add('visible');await sleep(600);
-  document.querySelector('.win-sub').textContent='璁板繂涔嬮棬锛屽凡琚綘鐐逛寒';document.querySelector('.win-sub').classList.add('visible');
-  document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">杩斿洖鐢诲嵎</button><button class="win-btn" onclick="replayCh3()">鍐嶆浣撻獙</button>';
+  document.querySelector('.win-sub').textContent='记忆之门，已被你点亮';document.querySelector('.win-sub').classList.add('visible');
+  document.getElementById('win-btns').innerHTML='<button class="win-btn" onclick="returnToScroll()">返回画卷</button><button class="win-btn" onclick="replayCh3()">再次体验</button>';
 }
 function replayCh3(){ch3W=false;ch3Lanterns=[];ch3LitCount=0;ch3PrevOpen=false;ch3Stars=[];document.getElementById('win-overlay').classList.remove('show');document.getElementById('ch3-board').classList.remove('complete');ch3Init()}
 
-// ==================== 缁撳眬绯荤粺 ====================
+// ==================== 结局系统 ====================
 let ch1Done=false,ch2Done=false,ch3Done=false,endingPhase=0,endingTimer=0,endingPs=[],_endingDone=false;
-const ENDING_TEXT=['姊﹀宸插渾','','浣犳壘鍥炰簡鏃嬭浆鏈ㄩ┈鐨勫揩涔?,'浣犲鍝嶄簡瀹夌湢鏇茬殑鏃嬪緥','浣犵偣浜簡璁板繂涔嬮棬鐨勭伅鐏?,'','閭ｄ簺鏁ｈ惤鐨勭鐗?,'缁堜簬鎷兼垚浜嗗畬鏁寸殑鑷繁','','姣忎竴涓ⅵ 閮藉€煎緱琚浣?,'姣忎竴娆″鎵?閮芥槸鎴愰暱','','鏅氬畨 姊﹀鐨勬梾浜?];
+const ENDING_TEXT=['梦境已圆','','你找回了旋转木马的快乐','你奏响了安眠曲的旋律','你点亮了记忆之门的灯火','','那些散落的碎片','终于拼成了完整的自己','','每一个梦 都值得被记住','每一次寻找 都是成长','','晚安 梦境的旅人'];
 
 function checkAllDone(){
   if(ch1Done&&ch2Done&&ch3Done&&gameState==='scroll'&&!_endingDone){
@@ -539,7 +552,7 @@ function updateEnding(){
   }
 }
 const endBgImg=new Image();endBgImg.src='BEIJINTU.png';
-const END_FULL_TEXT='浜庤糠闆句腑缁囨ⅵ锛屼簬娓呴啋涓垚闀裤€傛伃鍠滀綘锛屾垚鍔熸晳璧庡け钀界殑姊﹀銆?;
+const END_FULL_TEXT='于迷雾中织梦，于清醒中成长。恭喜你，成功救赎失落的梦境。';
 let endCharIdx=0,endCharTimer=0;
 
 function drawEnding(){
@@ -555,14 +568,14 @@ function drawEnding(){
   else{hx.fillStyle='#f5f0e8';hx.fillRect(cX,cY,cW,cH)}
   hx.shadowColor='transparent';hx.shadowBlur=0;hx.shadowOffsetY=0;
   if(endingPhase>=1){
-    // 閫愬瓧鏄剧幇
+    // 逐字显现
     if(endingTimer>=30){endCharTimer++;endCharIdx=Math.min(END_FULL_TEXT.length,Math.floor(endCharTimer/15));}
     const visible=END_FULL_TEXT.slice(0,endCharIdx);
     const cx=innerWidth/2,cy=cY+cH*.45;
     hx.fillStyle='rgba(200,160,80,.9)';hx.textAlign='center';
     hx.shadowColor='rgba(200,150,60,.5)';hx.shadowBlur=8;
     hx.font='bold 22px STSong,SimSun,serif';
-    // 鑷姩鎹㈣
+    // 自动换行
     const maxW=cW-60;let line='',lines=[],lineY=cy;
     for(const ch of visible){
       const test=line+ch;if(hx.measureText(test).width>maxW&&line.length>0){lines.push(line);line=ch}else{line=test}
@@ -572,17 +585,17 @@ function drawEnding(){
     if(endCharIdx>=END_FULL_TEXT.length){
       hx.shadowBlur=0;hx.font='14px STSong,SimSun,serif';
       hx.fillStyle=`rgba(180,140,80,${Math.min(1,(endingTimer-20-endCharIdx/2)/60)})`;
-      hx.fillText('杞昏Е浠绘剰浣嶇疆 鍥炲埌姊﹀紑濮嬬殑鍦版柟',cx,lineY+lines.length*32+30);
+      hx.fillText('轻触任意位置 回到梦开始的地方',cx,lineY+lines.length*32+30);
     }
     hx.shadowBlur=0;
   }
   hx.restore();
 }
-// 缁撳眬鐐瑰嚮鎴栨彙鎷宠繑鍥瀒ntro
+// 结局点击或握拳返回intro
 function endAccept(){endingPs.forEach(p=>p.el.remove());endingPs=[];gameState='intro';io.classList.remove('fade-out');io.style.display='flex';scrollHome.classList.remove('active');_endingDone=false;ch1Done=false;ch2Done=false;ch3Done=false;iC=false;introFistHold=0;fistHold=-60}
 document.addEventListener('click',e=>{if(gameState==='ending'&&endingPhase>=1)endAccept()});
 
-// ==================== 涓诲惊鐜?====================
+// ==================== 主循环 ====================
 let introFistHold=0;
 let introPs=[];
 function spawnIntroP(){
@@ -621,14 +634,14 @@ function mL(){
   for(let ri=ch2Rp.length-1;ri>=0;ri--){const rp=ch2Rp[ri];rp.lf++;const p=rp.lf/rp.mL;if(p>1){ch2Rp.splice(ri,1);continue}const al=p<.15?p/.15:p>.7?(1-p)/.3:1,r=rp.mR*p;hx.save();if(rp.dark){const recoil=p>.5?Math.sin((p-.5)/.5*Math.PI)*.6:0,dg=hx.createRadialGradient(rp.x,rp.y,0,rp.x,rp.y,r*2);dg.addColorStop(0,`rgba(255,255,255,${al*.2+recoil*.3})`);dg.addColorStop(.3,`rgba(200,210,240,${al*.12})`);dg.addColorStop(1,'rgba(100,140,200,0)');hx.fillStyle=dg;hx.beginPath();hx.arc(rp.x,rp.y,r*2,0,Math.PI*2);hx.fill()}else{const waves=8,amp=r*.06;hx.beginPath();for(let w=0;w<=waves*2;w++){const a=(w/(waves*2))*Math.PI*2,wr=r+Math.sin(a*waves+rp.phase)*amp,wx=rp.x+Math.cos(a)*wr,wy=rp.y+Math.sin(a)*wr;if(w===0)hx.moveTo(wx,wy);else hx.lineTo(wx,wy)}hx.strokeStyle=`rgba(255,255,255,${al*.45})`;hx.lineWidth=1.8*(1-p*.5);hx.shadowColor='rgba(200,220,255,.3)';hx.shadowBlur=6;hx.stroke();if(r>20){hx.beginPath();for(let w=0;w<=waves*2;w++){const a=(w/(waves*2))*Math.PI*2,wr2=r*.7+Math.sin(a*waves+rp.phase+1)*amp*1.3,wx=rp.x+Math.cos(a)*wr2,wy=rp.y+Math.sin(a)*wr2;if(w===0)hx.moveTo(wx,wy);else hx.lineTo(wx,wy)}hx.strokeStyle=`rgba(200,220,255,${al*.25})`;hx.lineWidth=1.2*(1-p*.4);hx.stroke()}const og=hx.createRadialGradient(rp.x,rp.y,r*.2,rp.x,rp.y,r*1.1);og.addColorStop(0,`rgba(255,255,255,${al*.1})`);og.addColorStop(.5,`rgba(200,220,255,${al*.07})`);og.addColorStop(1,'rgba(100,160,220,0)');hx.fillStyle=og;hx.beginPath();hx.arc(rp.x,rp.y,r*1.1,0,Math.PI*2);hx.fill()}hx.restore()}while(ch2Rp.length>40)ch2Rp.shift();
   requestAnimationFrame(mL)}mL();
 
-// ==================== 鍚姩 ====================
+// ==================== 启动 ====================
 const io=document.getElementById('intro-overlay'),iT=document.querySelector('.intro-title'),iB=document.querySelector('.intro-body'),iTap=document.querySelector('.intro-tap');let iC=false;
-async function pI(){await sleep(800);iT.classList.add('visible');await sleep(2200);iB.classList.add('visible');await typeText(iB,'姊﹀姝ｅ湪鏁ｈ惤鈥︹€n閭ｄ簺琚仐蹇樼殑纰庣墖锛岃繕鐣欏湪鏄熷厜閲屻€俓n鎶婂畠浠壘鍥炴潵鍚с€?,120);await sleep(1000);iTap.classList.add('visible')}pI();
+async function pI(){await sleep(800);iT.classList.add('visible');await sleep(2200);iB.classList.add('visible');await typeText(iB,'梦境正在散落……\n那些被遗忘的碎片，还留在星光里。\n把它们找回来吧。',120);await sleep(1000);iTap.classList.add('visible')}pI();
 const WHITE_SCREENS=[
-  '姊﹀瀹屾暣瀛樼画锛屼緷闈犱笁灞傛劅鐭ヤ氦缁囪€屾垚锛氱溂鎵€瑙併€佽€虫墍闂汇€佸績鎵€蹇电殑鍐呭湪瑙夌煡銆?,
-  '浜烘參鎱㈤暱澶э紝寮€濮嬪拷鐣ョ編濂姐€佸皝闂儏缁€?br>娣″繕鏈熻锛屼笁绉嶆劅鐭ラ€愪竴楹绘湪娑堟暎銆?,
-  '浣犻渶瑕佷緷娆℃壘鍥炶瑙夈€佸惉瑙変笌蹇冭锛?br>涓夊眰鎰熺煡鍚堜竴锛屾ⅵ澧冩墠鑳介噸鏂板嚌鑱氥€?,
-  '浣犳兂杩涘叆鎬庢牱鐨勬ⅵ澧冿紵'
+  '梦境完整存续，依靠三层感知交织而成：眼所见、耳所闻、心所念的内在觉知。',
+  '人慢慢长大，开始忽略美好、封闭情绪、<br>淡忘期许，三种感知逐一麻木消散。',
+  '你需要依次找回视觉、听觉与心觉，<br>三层感知合一，梦境才能重新凝聚。',
+  '你想进入怎样的梦境？'
 ];
 let whiteScreenIdx=0,whiteIntroTimer=0,whiteTextAlpha=0;
 
@@ -646,7 +659,7 @@ function showWhiteIntro(){
 let whiteSwitching=false;
 function updateWhiteIntro(){
   if(gameState!=='whiteIntro')return;whiteIntroTimer++;
-  // 鍓?灞忥細娣″叆鈫掑仠鐣欌啋娣″嚭鍒囨崲
+  // 前3屏：淡入→停留→淡出切换
   if(whiteScreenIdx<3){
     if(!whiteSwitching){
       const total=620,fi=100,fo=520;
@@ -656,7 +669,8 @@ function updateWhiteIntro(){
       if(whiteIntroTimer>total){whiteSwitching=true;document.getElementById('white-title').style.opacity='0';setTimeout(()=>{whiteScreenIdx++;whiteIntroTimer=0;document.getElementById('white-title').innerHTML=WHITE_SCREENS[whiteScreenIdx];document.getElementById('white-title').style.opacity='0';whiteSwitching=false},400)}
     }
   }
-  // 绗?灞忥細鍙贰鍏ワ紝涓嶆贰鍑?  if(whiteScreenIdx===3){
+  // 第4屏：只淡入，不淡出
+  if(whiteScreenIdx===3){
     document.getElementById('white-guide').style.display='none';
     document.getElementById('white-tap').style.display='block';
     if(whiteIntroTimer<80)document.getElementById('white-title').style.opacity=whiteIntroTimer/80;
