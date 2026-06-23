@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寻找失落的梦境 - 项目展板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1008;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+/* A2 展板 420×594mm, 横版 594×420, 比例 1.414:1 */
+.board{width:1200px;height:848px;background:linear-gradient(160deg,#faf6f0 0%,#f2e8d8 30%,#e8dcc8 60%,#f0e8d8 100%);position:relative;overflow:hidden;font-family:'STSong','SimSun','Songti SC',serif;box-shadow:0 10px 60px rgba(0,0,0,.5)}
+/* 背景装饰 */
+.board::before{content:'';position:absolute;top:-80px;right:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,100,.12) 0%,transparent 70%);pointer-events:none}
+.board::after{content:'';position:absolute;bottom:-60px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(180,140,80,.08) 0%,transparent 70%);pointer-events:none}
+
+/* 顶部标题区 */
+.header{position:relative;padding:40px 50px 20px;display:flex;align-items:center;gap:30px}
+.title-block{flex:1}
+.project-title{font-size:42px;font-weight:bold;color:#5a3020;letter-spacing:10px;line-height:1.3}
+.project-title .highlight{color:#b87830;font-size:52px}
+.project-subtitle{font-size:16px;color:#8a6040;letter-spacing:8px;margin-top:8px;font-weight:bold}
+.divider-line{width:120px;height:2px;background:linear-gradient(90deg,#c89860,transparent);margin:14px 0}
+/* 装饰印章 */
+.seal{width:70px;height:70px;border:3px solid #c88040;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#c88040;font-size:14px;font-weight:bold;letter-spacing:3px;transform:rotate(15deg);opacity:.7;line-height:1.4;text-align:center;flex-shrink:0}
+
+/* 主体内容区 */
+.main-content{display:flex;padding:0 50px;gap:35px;height:580px}
+/* 左列-项目介绍 */
+.left-col{flex:1;display:flex;flex-direction:column;gap:18px}
+.intro-text{font-size:14px;color:#5a3820;line-height:2;letter-spacing:1.5px;text-align:justify}
+.intro-text strong{color:#8a5028;font-size:15px}
+.feature-block{padding:14px 18px;border-left:3px solid #c89860;background:rgba(200,160,100,.06);margin:4px 0}
+.feature-block h3{font-size:16px;color:#8a5028;letter-spacing:5px;margin-bottom:6px}
+.feature-block p{font-size:13px;color:#6a4030;line-height:1.8;letter-spacing:1px}
+
+/* 右列-图片展示 */
+.right-col{flex:1.35;display:flex;flex-direction:column;gap:12px}
+.img-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;flex:1}
+.img-card{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);position:relative;border:1px solid rgba(180,140,100,.2)}
+.img-card img{width:100%;height:100%;object-fit:cover}
+.img-card.wide{grid-column:span 2}
+.img-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#f0d8a0;font-size:11px;text-align:center;padding:4px 0;letter-spacing:2px}
+/* 图片占位 - 用渐变模拟 */
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(120,70,30,.5);letter-spacing:3px;background:linear-gradient(135deg,rgba(200,160,100,.15),rgba(180,140,80,.08))}
+
+/* 底部信息栏 */
+.footer{position:absolute;bottom:0;left:0;right:0;padding:16px 50px;background:linear-gradient(0deg,rgba(80,40,20,.08) 0%,transparent 100%);display:flex;justify-content:space-between;align-items:center}
+.footer-link{font-size:14px;color:#8a5028;letter-spacing:2px;font-weight:bold}
+.footer-link a{color:#a06030;text-decoration:none;border-bottom:1px dashed #c89860}
+.footer-info{font-size:12px;color:#9a7050;letter-spacing:2px;text-align:right}
+/* 浮动装饰 */
+.ornament{position:absolute;pointer-events:none;opacity:.15}
+.ornament.tl{top:30px;left:30px;font-size:60px;transform:rotate(-15deg)}
+.ornament.tr{top:30px;right:40px;font-size:40px;transform:rotate(20deg)}
+.ornament.br{bottom:50px;right:30px;font-size:50px;transform:rotate(-10deg)}
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="ornament tl">✦</div>
+  <div class="ornament tr">✧</div>
+  <div class="ornament br">✦</div>
+
+  <!-- 顶部 -->
+  <div class="header">
+    <div class="title-block">
+      <div class="project-title">寻 找 失 落 的 <span class="highlight">梦 境</span></div>
+      <div class="project-subtitle">FINDING THE LOST DREAMS</div>
+      <div class="divider-line"></div>
+      <div style="font-size:15px;color:#6a4030;letter-spacing:4px;font-weight:bold">基于手势交互的多媒体梦境修复艺术项目</div>
+    </div>
+    <div class="seal">梦境<br>木马</div>
+  </div>
+
+  <!-- 主体 -->
+  <div class="main-content">
+    <!-- 左列 -->
+    <div class="left-col">
+      <div class="intro-text">
+        <strong>《寻找失落的梦境》</strong>是一份以「梦境修复」为叙事核心的多媒体交互艺术作品。作品融合了<strong>手势识别技术</strong>与<strong>拼图叙事</strong>，构建了一个由视觉、听觉、心觉三层感知交织而成的梦境世界。
+      </div>
+      <div class="feature-block">
+        <h3>🎠 第一章 · 停滞的乐园</h3>
+        <p>九块散落的拼图碎片，需通过鼠标拖拽或手势抓取，将旋转木马拼合完整。找回被遗忘的童年快乐。</p>
+      </div>
+      <div class="feature-block">
+        <h3>🎻 第二章 · 静默的音符</h3>
+        <p>七根琴弦悬浮于画面，手指拂过即奏响安眠曲。金色光点引导弹奏顺序，十四音符逐一亮起，唤醒沉睡的旋律。</p>
+      </div>
+      <div class="feature-block">
+        <h3>🏮 第三章 · 孔明之灯</h3>
+        <p>双手合十许下心愿，六盏孔明灯从夜色中升起。每点亮一盏，便触发一段纯真愿望，温暖的光照亮记忆之门。</p>
+      </div>
+      <div class="intro-text" style="font-size:13px;margin-top:auto">
+        <strong>创作工具：</strong>HTML / CSS / JavaScript / MediaPipe Hands / Web Audio API / Canvas<br>
+        <strong>交互方式：</strong>手势识别 · 鼠标拖拽 · 触屏操作 · 摄像头实时捕捉<br>
+        <strong>设计风格：</strong>暖金梦境 · 星空粒子 · 水墨质感 · 行书字体
+      </div>
+    </div>
+
+    <!-- 右列 -->
+    <div class="right-col">
+      <div class="img-grid">
+        <div class="img-card">
+          <img src="底图.png" alt="开篇" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">开篇叙事</div>
+          <div class="img-label">开篇 · 进入梦境</div>
+        </div>
+        <div class="img-card">
+          <img src="画卷.png" alt="画卷" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">画卷主页</div>
+          <div class="img-label">画卷 · 三关选择</div>
+        </div>
+        <div class="img-card">
+          <img src="images/木马.png" alt="木马" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">旋转木马</div>
+          <div class="img-label">第一章 · 木马拼图</div>
+        </div>
+        <div class="img-card">
+          <img src="images/小提琴.png" alt="小提琴" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">静默音符</div>
+          <div class="img-label">第二章 · 琴弦弹奏</div>
+        </div>
+        <div class="img-card">
+          <img src="KONG.png" alt="孔明灯" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">孔明之灯</div>
+          <div class="img-label">第三章 · 孔明之灯</div>
+        </div>
+        <div class="img-card">
+          <img src="XX.png" alt="XX" onerror="this.style.display='none';this.parentElement.querySelector('.img-placeholder').style.display='flex'">
+          <div class="img-placeholder" style="display:none">记忆之门</div>
+          <div class="img-label">第三章 · 许愿界面</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="footer-link">
+      🌐 在线体验：<a href="https://zhouys1227.github.io/mengjing/" target="_blank">zhouys1227.github.io/mengjing</a>
+    </div>
+    <div class="footer-info">
+      创作日期 2026 · 手势交互多媒体艺术 · A2 展板
+    </div>
+  </div>
+</div>
+</body>
+</html>
