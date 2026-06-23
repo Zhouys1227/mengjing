@@ -12,7 +12,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 /* ======== 开篇叙事 ======== */
 #intro-overlay{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 2s}
 #intro-overlay.fade-out{opacity:0;pointer-events:none}
-#intro-bg{position:absolute;inset:0;background:url(%E5%BA%95%E5%9B%BE.png) center/cover no-repeat;z-index:0;opacity:.88}
+#intro-bg{position:absolute;inset:0;background:url(%E5%BA%95%E5%9B%BE.jpg) center/cover no-repeat;z-index:0;opacity:.88}
 #intro-card{position:relative;z-index:1;width:clamp(260px,50vw,500px);padding:clamp(30px,6vh,60px) clamp(20px,4vw,50px);background:url(BEIJINTU.png) center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:cardFloat 7s ease-in-out infinite}
 @keyframes cardFloat{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-6px) rotate(.25deg)}50%{transform:translateY(3px) rotate(-.2deg)}75%{transform:translateY(-4px) rotate(.35deg)}}
 .intro-title{color:rgba(190,145,80,.95);font-size:clamp(24px,4.5vw,40px);letter-spacing:10px;text-shadow:0 0 8px rgba(170,120,50,.5);opacity:0;transition:opacity 2s;margin-bottom:clamp(16px,3vh,36px)}
@@ -139,7 +139,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a1008;font-family:
 
 <div class="chapter" id="ch1"><div id="ch1-guide"></div><div id="ch1-board"></div></div>
 <div class="chapter" id="ch2"><div id="ch2-bg"></div><div id="ch2-prompt"></div><div id="ch2-guide"></div></div>
-<div class="chapter" id="ch3"><img src="XX.png" style="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.4"><div id="ch3-guide"></div><div id="ch3-board"></div></div>
+<div class="chapter" id="ch3"><img src="XX.jpg" style="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.4"><div id="ch3-guide"></div><div id="ch3-board"></div></div>
 
 <svg width="0" height="0"><defs id="clip-defs"></defs></svg>
 
@@ -246,8 +246,8 @@ const STORY_TEXT=['张开手左右滑动 · 探索画卷','单手握拳 · 进�
 
 const scrollImgEl=new Image();
 scrollImgEl.onload=()=>{scrollReady=true;scrollTotalW=scrollImgEl.width*(innerHeight/scrollImgEl.height);scrollX=-(scrollTotalW-innerWidth)/2;scrollTargetX=scrollX};
-scrollImgEl.onerror=()=>{if(scrollImgEl.src.indexOf('%')===-1)scrollImgEl.src='画卷.png'};
-scrollImgEl.src='画卷.png';
+scrollImgEl.onerror=()=>{if(scrollImgEl.src.indexOf('%')===-1)scrollImgEl.src='画卷.jpg'};
+scrollImgEl.src='画卷.jpg';
 
 function getScrollSec(){if(!scrollReady)return 1;const maxRange=Math.max(scrollTotalW-innerWidth,innerWidth*.45)+50;const seg=(maxRange+50)/3;if(scrollX>50-seg)return 0;if(scrollX>50-seg*2)return 1;return 2}
 
@@ -373,7 +373,7 @@ function returnToScroll(){
 function ch2Cleanup(){ch2W=false;ch2St=[];ch2Rp=[];ch2NoteStep=0;ch2Hints=[];ch2Started=false;document.getElementById('ch2-bg').className='';document.getElementById('ch2-bg').style.backgroundImage='';document.getElementById('ch2-prompt').textContent='';document.getElementById('ch2-guide').classList.remove('visible');document.getElementById('ch2-guide').innerHTML=''}
 
 // ==================== 第一章：拼图 ====================
-const ROWS=3,COLS=3,IMG1='images/木马.png';
+const ROWS=3,COLS=3,IMG1='images/木马.jpg';
 const hEs=[['tab','blank','tab'],['blank','tab','blank']],vEs=[['blank','tab','blank'],['tab','blank','tab']];
 function opp(t){if(t==='tab')return'blank';if(t==='blank')return'tab';return'flat'}
 function gEs(r,c){return{top:r===0?'flat':opp(hEs[r-1][c]),bottom:r===ROWS-1?'flat':hEs[r][c],left:c===0?'flat':opp(vEs[c-1][r]),right:c===COLS-1?'flat':vEs[c][r]}}
@@ -391,7 +391,7 @@ function replayCh1(){ch1W=false;ch1P.forEach(p=>{if(p.el)p.el.remove()});ch1P=[]
 function rG(){if(!gP)return;const p=gP;p.el.classList.remove('dragging');c1S(p);if(!p.sn)p.el.classList.add('floating');gP=null;c1W()}
 
 // ==================== 第二章：安眠曲 ====================
-const IMG2='images/小提琴.png';
+const IMG2='images/小提琴.jpg';
 const NOTE_NAMES=['C','D','E','F','G','A','B'];
 const LULLABY_FREQ=[261.63,293.66,329.63,349.23,392.00,440.00,493.88];
 const LULLABY=[0,2,4,2,0,5,3,1,4,2,0,1,2,0];
