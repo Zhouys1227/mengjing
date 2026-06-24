@@ -94,6 +94,31 @@ html{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 .float-el.bl{bottom:80px;left:50px;font-size:36px;animation-delay:-2s}
 .float-el.br{bottom:60px;right:30px;font-size:44px;animation-delay:-3s}
 
+/* 滚动动画 */
+.reveal{opacity:0;transform:translateY(60px);transition:all .8s cubic-bezier(.17,.85,.44,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-80px);transition:all .8s cubic-bezier(.17,.85,.44,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(80px);transition:all .8s cubic-bezier(.17,.85,.44,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.8);transition:all .7s cubic-bezier(.34,1.56,.64,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+/* 服务卡片 */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.service-card{border:3px solid #000;background:#fff;padding:30px 24px;text-align:center;box-shadow:6px 6px 0 rgba(0,0,0,.15);transition:all .3s}
+.service-card:hover{transform:translate(-4px,-4px);box-shadow:12px 12px 0 #7b2fff}
+.service-card .icon{font-size:48px;margin-bottom:16px}
+.service-card h4{font-size:20px;font-weight:900;margin-bottom:10px;letter-spacing:1px}
+.service-card p{font-size:13px;color:#555;line-height:1.6;font-weight:600}
+/* 时间线 */
+.timeline{max-width:800px;margin:0 auto;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:4px;background:#ff2d95}
+.timeline-item{position:relative;margin-bottom:30px;padding:20px;border:3px solid #000;background:#fff;box-shadow:6px 6px 0 rgba(0,0,0,.1)}
+.timeline-item::before{content:'';position:absolute;left:-50px;top:24px;width:20px;height:20px;border-radius:50%;background:#ff2d95;border:3px solid #000}
+.timeline-item .year{font-size:14px;font-weight:900;color:#ff2d95;letter-spacing:2px;margin-bottom:6px}
+.timeline-item h4{font-size:18px;font-weight:900;margin-bottom:6px}
+.timeline-item p{font-size:13px;color:#555;line-height:1.6;font-weight:600}
+
 /* 响应式 */
 @media(max-width:768px){
   .hero h1{font-size:48px}.about-grid{grid-template-columns:1fr}.works-grid{grid-template-columns:1fr}
@@ -123,10 +148,10 @@ html{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 
 <!-- 作品 -->
 <section class="section" id="works">
-  <div class="section-title">✦ SELECTED WORKS</div>
+  <div class="section-title reveal">✦ SELECTED WORKS</div>
   <div class="works-grid">
-    <div class="work-card"><div class="work-img">🖌️</div><div class="work-info"><h3>作品展示 01</h3><div class="desc">品牌视觉识别设计项目。从概念到落地，完整的品牌视觉系统，包含标志、字体、色彩规范与应用延展。</div><div class="tech"><span>Branding</span><span>VI Design</span><span>Typography</span></div></div></div>
-    <div class="work-card"><div class="work-img">📱</div><div class="work-info"><h3>作品展示 02</h3><div class="desc">移动端应用界面设计。以用户体验为核心，打造简洁直观的交互流程，注重视觉层级与操作流畅性。</div><div class="tech"><span>UI/UX</span><span>Figma</span><span>Prototype</span></div></div></div>
+    <div class="work-card reveal-scale"><div class="work-img">🖌️</div><div class="work-info"><h3>作品展示 01</h3><div class="desc">品牌视觉识别设计项目。从概念到落地，完整的品牌视觉系统，包含标志、字体、色彩规范与应用延展。</div><div class="tech"><span>Branding</span><span>VI Design</span><span>Typography</span></div></div></div>
+    <div class="work-card reveal-scale"><div class="work-img">📱</div><div class="work-info"><h3>作品展示 02</h3><div class="desc">移动端应用界面设计。以用户体验为核心，打造简洁直观的交互流程，注重视觉层级与操作流畅性。</div><div class="tech"><span>UI/UX</span><span>Figma</span><span>Prototype</span></div></div></div>
     <div class="work-card"><div class="work-img">🎬</div><div class="work-info"><h3>作品展示 03</h3><div class="desc">动态视觉短片创作。结合实拍与数字合成技术，探索视觉叙事的新可能，实验性影像风格。</div><div class="tech"><span>Motion</span><span>After Effects</span><span>3D</span></div></div></div>
     <div class="work-card"><div class="work-img">🖼️</div><div class="work-info"><h3>作品展示 04</h3><div class="desc">插画与视觉艺术系列。融合手绘质感与数字技法，构建独特的视觉世界观与个人风格语言。</div><div class="tech"><span>Illustration</span><span>Procreate</span><span>Photoshop</span></div></div></div>
     <div class="work-card"><div class="work-img">🌐</div><div class="work-info"><h3>作品展示 05</h3><div class="desc">创意网页设计项目。前沿视觉风格与交互体验的融合，打破传统的网页设计范式。</div><div class="tech"><span>Web Design</span><span>CSS</span><span>JavaScript</span></div></div></div>
@@ -148,6 +173,29 @@ html{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
         <div class="about-stat"><div class="num">∞</div><div class="lbl">CREATIVITY</div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 服务 -->
+<section class="section" style="background:#faf0f8">
+  <div class="section-title reveal">✦ SERVICES</div>
+  <div class="services-grid">
+    <div class="service-card reveal-scale"><div class="icon">🎯</div><h4>品牌视觉设计</h4><p>从品牌策略到视觉识别系统，打造完整统一的品牌形象，包含标志、色彩、字体规范</p></div>
+    <div class="service-card reveal-scale"><div class="icon">📱</div><h4>UI/UX 设计</h4><p>以用户为中心的界面设计，从信息架构到高保真原型，注重交互体验与视觉美学</p></div>
+    <div class="service-card reveal-scale"><div class="icon">🎬</div><h4>动态视觉</h4><p>动态图形与动画设计，为品牌和产品注入生命力，涵盖Motion Graphics与交互动效</p></div>
+    <div class="service-card reveal-scale"><div class="icon">🖼️</div><h4>插画创作</h4><p>商业插画与视觉艺术，独特的个人风格结合项目需求，为品牌增添艺术感染力</p></div>
+    <div class="service-card reveal-scale"><div class="icon">🌐</div><h4>网页设计</h4><p>创意网页与H5页面设计，前沿视觉风格结合流畅的交互体验，打破传统范式</p></div>
+    <div class="service-card reveal-scale"><div class="icon">🎨</div><h4>艺术指导</h4><p>跨媒介创意方向把控，从概念构思到视觉呈现，提供全方位的创意解决方案</p></div>
+  </div>
+</section>
+
+<!-- 经历 -->
+<section class="section" style="background:#fff;border-top:4px solid #000">
+  <div class="section-title reveal">✦ EXPERIENCE</div>
+  <div class="timeline">
+    <div class="timeline-item reveal-left"><div class="year">2024 - 2026</div><h4>自由设计师 / 独立创作者</h4><p>为多家品牌提供视觉设计服务，涵盖品牌VI、UI设计、插画与动态视觉，累积丰富的跨领域项目经验</p></div>
+    <div class="timeline-item reveal-right"><div class="year">2022 - 2024</div><h4>高级视觉设计师 @ 创意工作室</h4><p>负责多个品牌全案视觉设计，主导移动端产品UI/UX设计，参与创意策略与视觉规范制定</p></div>
+    <div class="timeline-item reveal-left"><div class="year">2020 - 2022</div><h4>视觉设计专业 · 本科</h4><p>系统学习平面设计、数字媒体、品牌设计，在校期间获得多项设计竞赛奖项，毕业作品获优秀评价</p></div>
   </div>
 </section>
 
@@ -188,6 +236,10 @@ html{cursor:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 </footer>
 
 <script>
+// 滚动触发动画
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>observer.observe(el));
+
 // 鼠标靠近震动效果
 document.querySelectorAll('.work-card, .skill-bar, .contact-btn, .social-link, .section-title, .about-stat').forEach(el=>{
   el.addEventListener('mousemove',function(e){
