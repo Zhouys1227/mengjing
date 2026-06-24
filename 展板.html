@@ -6,158 +6,173 @@
 <title>寻找失落的梦境 - 项目展板</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d0a06;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:35px;font-family:'STSong','SimSun','Songti SC','Noto Serif CJK SC',serif}
-.board{width:1000px;height:1414px;background:#fdfaf6;position:relative;overflow:hidden;box-shadow:0 12px 70px rgba(0,0,0,.6)}
+body{background:#0d0a06;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:30px;font-family:'STSong','SimSun','Songti SC','Noto Serif CJK SC',serif}
+.board{width:1000px;height:1414px;background:#fdfaf5;position:relative;overflow:hidden;box-shadow:0 12px 70px rgba(0,0,0,.6)}
 
-/* 顶部标题条 */
-.top-bar{background:linear-gradient(135deg,#1e0d04,#3b1e0e,#2a1307);padding:22px 30px 16px;color:#e0c080;position:relative;z-index:2}
-.top-bar h1{font-size:36px;letter-spacing:10px;font-weight:bold;color:#ecc878}
-.top-bar .en{font-size:11px;letter-spacing:5px;color:rgba(220,180,120,.45);margin:2px 0 8px}
-.top-bar .meta{display:flex;gap:16px;font-size:10px;letter-spacing:3px;color:rgba(220,180,120,.55);flex-wrap:wrap}
-.top-bar .meta span{background:rgba(0,0,0,.2);padding:3px 12px;border-radius:10px}
-.top-bar .url{display:inline-block;margin-top:8px;padding:6px 14px;background:rgba(0,0,0,.3);border-radius:6px;font-size:11px;letter-spacing:2px;color:rgba(220,180,120,.6)}
-.top-bar .url a{color:#ffda90;text-decoration:none;font-size:13px;font-weight:bold;margin-left:4px}
+/* 顶部 */
+.header{background:linear-gradient(135deg,#1b0c03,#3a1c0c,#261206);padding:20px 28px 14px;color:#e0c080;position:relative;z-index:2}
+.header h1{font-size:36px;letter-spacing:10px;font-weight:bold;color:#ecc878}
+.header .sub{font-size:10.5px;letter-spacing:4px;color:rgba(220,180,120,.45);margin:4px 0 6px}
+.header .link{display:inline-block;padding:5px 12px;background:rgba(0,0,0,.3);border-radius:5px;font-size:11px;letter-spacing:1px;color:rgba(220,180,120,.55)}
+.header .link a{color:#ffda90;text-decoration:none;font-size:13px;font-weight:bold;margin-left:4px}
 
-/* 主内容区 4行 */
-.main{padding:16px 26px 12px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:2;height:calc(100% - 150px)}
-.row{display:flex;gap:14px;flex:1}
-.row-label{width:26px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:3px}
-.row-num{width:24px;height:24px;border-radius:50%;background:#b08040;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:bold}
-.row-body{flex:1;min-width:0}
-.row-body h3{font-size:16px;color:#3a1808;letter-spacing:4px;margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid rgba(180,120,60,.2)}
+/* 主体 */
+.main{padding:14px 24px 10px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:2;height:calc(100% - 130px)}
+.section{flex:1;display:flex;gap:12px;align-items:stretch}
+.s-num{width:24px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:2px}
+.s-dot{width:22px;height:22px;border-radius:50%;background:#b08040;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.s-body{flex:1;min-width:0}
+.s-body h3{font-size:16px;color:#3a1808;letter-spacing:4px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid rgba(180,120,60,.2)}
 
-/* ===== 统一图片网格 ===== */
-.img-grid{display:grid;gap:8px;height:100%}
-.img-grid.cols2{grid-template-columns:1fr 1fr}
-.img-grid.cols3{grid-template-columns:1fr 1fr 1fr}
-.img-grid.cols4{grid-template-columns:1fr 1fr 1fr 1fr}
-.img-card{border-radius:4px;overflow:hidden;border:1px solid rgba(180,140,100,.1);position:relative;background:#f5efe4}
-.img-card img{width:100%;height:100%;object-fit:cover}
-.img-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#f0d8a0;font-size:9px;text-align:center;padding:3px 0;letter-spacing:2px}
+/* === 1.创新 === */
+.innov-row{display:flex;gap:10px;height:100%}
+.innov-img{width:200px;flex-shrink:0;border-radius:4px;overflow:hidden;border:1px solid rgba(180,140,100,.12);position:relative;background:#f5efe4}
+.innov-img img{width:100%;height:100%;object-fit:cover}
+.innov-img .cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.5));color:#f0d8a0;font-size:9px;text-align:center;padding:2px 0;letter-spacing:2px}
+.innov-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.innov-item{display:flex;gap:6px;align-items:flex-start;padding:7px 9px;background:rgba(200,160,100,.04);border-radius:4px;border-left:2px solid rgba(180,120,60,.2)}
+.innov-item .ico{font-size:18px;flex-shrink:0}
+.innov-item .text{font-size:10.5px;color:#4a2008;line-height:1.7;letter-spacing:.3px}
+.innov-item .text b{color:#7a4520}
+
+/* === 2.流程 === */
+.flow-container{display:flex;gap:8px;height:100%;font-size:11px;color:#4a2008}
+.flow-phase{flex:1;padding:8px 10px;background:rgba(200,160,100,.03);border-radius:4px;border:1px solid rgba(180,140,100,.08)}
+.flow-phase .phase-name{font-size:12px;font-weight:bold;color:#5a3010;letter-spacing:2px;margin-bottom:5px;text-align:center}
+.flow-phase .step{line-height:1.9;padding:1px 0;letter-spacing:.5px;border-bottom:1px dotted rgba(180,140,100,.1)}
+.flow-phase .step .g{display:inline-block;background:rgba(200,150,80,.1);padding:0 6px;border-radius:5px;font-size:9.5px;color:#8a5020;font-weight:bold}
+.flow-arrow{display:flex;align-items:center;color:#b08040;font-size:20px;flex-shrink:0}
+
+/* === 3.界面三图 === */
+.showcase{display:flex;gap:10px;height:100%}
+.sc-card{flex:1;border-radius:4px;overflow:hidden;border:1px solid rgba(180,140,100,.12);position:relative;background:#f5efe4}
+.sc-card img{width:100%;height:100%;object-fit:cover}
+.sc-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#f0d8a0;font-size:10px;text-align:center;padding:4px 0;letter-spacing:2px}
+.sc-desc{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.45);color:#f0d8a0;font-size:9px;padding:3px 8px;border-radius:3px;letter-spacing:2px}
 .img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(120,70,30,.25);letter-spacing:2px;background:linear-gradient(135deg,rgba(200,160,100,.05),rgba(180,140,80,.03))}
 
-/* ===== 文字卡片 ===== */
-.text-card{padding:8px 10px;background:rgba(200,160,100,.04);border-radius:4px;border-left:2px solid rgba(180,120,60,.25);font-size:11px;color:#4a2008;line-height:1.7;letter-spacing:.5px}
-.text-card b{color:#7a4520;font-size:12px}
-.small-cards{display:flex;flex-direction:column;gap:5px;height:100%}
-.small-cards .text-card{flex:1}
-
-/* ===== 流程箭头 ===== */
-.flow-list{font-size:11px;color:#4a2008;line-height:2;letter-spacing:1px}
-.flow-list .step{margin:2px 0;padding-left:8px;border-left:2px solid rgba(180,120,60,.3)}
-.flow-list .gesture{display:inline-block;background:rgba(200,150,80,.1);padding:1px 7px;border-radius:6px;font-size:10px;color:#8a5020;font-weight:bold;margin:1px 3px}
-
-/* ===== 场景卡片 ===== */
+/* === 4.场景 === */
 .scene-row{display:flex;gap:8px;height:100%}
-.scene-card{flex:1;text-align:center;padding:10px 6px;background:rgba(200,160,100,.04);border-radius:6px;border:1px solid rgba(180,140,100,.08);display:flex;flex-direction:column;justify-content:center}
-.scene-card .emoji{font-size:24px;margin-bottom:4px}
+.scene-card{flex:1;text-align:center;padding:8px 5px;background:rgba(200,160,100,.03);border-radius:6px;border:1px solid rgba(180,140,100,.08);display:flex;flex-direction:column;justify-content:center}
+.scene-card .emoji{font-size:26px;margin-bottom:3px}
 .scene-card .name{font-size:11px;font-weight:bold;color:#4a2008;letter-spacing:2px;margin-bottom:3px}
 .scene-card .desc{font-size:9.5px;color:#6a4020;line-height:1.5;letter-spacing:.5px}
 
 /* 底部 */
-.foot{position:absolute;bottom:0;left:0;right:0;background:#3a1d0c;color:rgba(220,180,120,.55);padding:9px 30px;font-size:9px;letter-spacing:2px;display:flex;justify-content:space-between;z-index:2}
+.foot{position:absolute;bottom:0;left:0;right:0;background:#3a1d0c;color:rgba(220,180,120,.5);padding:8px 28px;font-size:9px;letter-spacing:2px;display:flex;justify-content:space-between;z-index:2}
 </style>
 </head>
 <body>
 <div class="board">
-  <!-- === 标题 === -->
-  <div class="top-bar">
+  <!-- 标题 -->
+  <div class="header">
     <h1>寻 找 失 落 的 梦 境</h1>
-    <div class="en">FINDING THE LOST DREAMS — 基于手势交互的多媒体梦境修复艺术项目</div>
-    <div class="meta"><span>手势识别</span><span>拼图叙事</span><span>琴弦弹奏</span><span>孔明灯许愿</span><span>MediaPipe</span><span>Canvas</span></div>
-    <div class="url">🌐 <a href="https://zhouys1227.github.io/mengjing/" target="_blank">zhouys1227.github.io/mengjing</a></div>
+    <div class="sub">FINDING THE LOST DREAMS — 手势交互 · 多媒体梦境修复艺术项目</div>
+    <div class="link">🌐 <a href="https://zhouys1227.github.io/mengjing/" target="_blank">zhouys1227.github.io/mengjing</a></div>
   </div>
 
-  <!-- === 主体 4 行 === -->
+  <!-- 主体 -->
   <div class="main">
     <!-- 1. 核心创新体验 -->
-    <div class="row">
-      <div class="row-label"><div class="row-num">1</div></div>
-      <div class="row-body">
+    <div class="section">
+      <div class="s-num"><div class="s-dot">1</div></div>
+      <div class="s-body">
         <h3>核心创新体验</h3>
-        <div class="img-grid cols4">
-          <div class="img-card"><img src="底图.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">开篇界面</div><div class="img-cap">开篇叙事信纸</div></div>
-          <div class="img-card"><img src="画卷.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">画卷主页</div><div class="img-cap">画卷三关选择</div></div>
-          <div class="small-cards">
-            <div class="text-card"><b>✋ 手势交互</b><br>MediaPipe Hands 捕捉手部21个骨骼节点，识别握拳、张开、双手合十等自然手势，无需接触屏幕</div>
-            <div class="text-card"><b>📜 画卷主页</b><br>全景长卷横向滑动浏览，三区域对应三个梦境篇章，模拟展开古老画卷的沉浸式探索体验</div>
-          </div>
-          <div class="small-cards">
-            <div class="text-card"><b>🎨 三层叙事</b><br>视觉幻境（拼图）、听觉心绪（琴弦）、心念觉知（许愿），三层感知合一修复破碎梦境</div>
-            <div class="text-card"><b>✨ 实时反馈</b><br>流体波纹扩散、金色光晕呼吸、星空粒子漂浮、琴弦弯曲振动，每个动作都有丰富视觉回应</div>
+        <div class="innov-row">
+          <div class="innov-img"><img src="画卷.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">画卷主页</div><div class="cap">画卷 · 三关探索</div></div>
+          <div class="innov-grid">
+            <div class="innov-item"><div class="ico">✋</div><div class="text"><b>手势识别交互</b><br>MediaPipe Hands 捕捉手部21个骨骼节点，识别握拳、张开、合十等自然手势，无需触碰屏幕即可完成全部操作</div></div>
+            <div class="innov-item"><div class="ico">📜</div><div class="text"><b>画卷式主页</b><br>全景长卷横向滑动浏览，左中右三区域对应三个梦境篇章，模拟展开古老画卷的沉浸探索体验</div></div>
+            <div class="innov-item"><div class="ico">🎨</div><div class="text"><b>三层梦境叙事</b><br>视觉幻境（拼图）· 听觉心绪（琴弦）· 心念觉知（许愿），三层感知合一修复破碎梦境</div></div>
+            <div class="innov-item"><div class="ico">✨</div><div class="text"><b>实时视觉反馈</b><br>流体波纹扩散、金色光晕呼吸、星空粒子飘浮、琴弦弯曲振动、孔明灯缓缓升空，每个动作都有呼应</div></div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 2. 交互体验流程 -->
-    <div class="row">
-      <div class="row-label"><div class="row-num">2</div></div>
-      <div class="row-body">
+    <div class="section">
+      <div class="s-num"><div class="s-dot">2</div></div>
+      <div class="s-body">
         <h3>交互体验流程</h3>
-        <div class="img-grid cols3" style="grid-template-columns:1fr 1.5fr 1fr">
-          <div class="flow-list">
-            <div style="font-weight:bold;color:#5a3010;margin-bottom:4px">🌙 进入梦境</div>
-            <div class="step">开篇叙事文字浮现</div>
+        <div class="flow-container">
+          <div class="flow-phase">
+            <div class="phase-name">🌙 进入</div>
+            <div class="step">开篇信纸漂浮出现</div>
             <div class="step">纯白引导四页轮播</div>
-            <div class="step"><span class="gesture">握拳/点击</span> 收下信纸</div>
-            <div style="font-weight:bold;color:#5a3010;margin:6px 0 4px">📜 画卷探索</div>
-            <div class="step"><span class="gesture">张开手</span> 滑动浏览三区域</div>
-            <div class="step"><span class="gesture">单手握拳</span> 选中关卡进入</div>
-            <div style="font-weight:bold;color:#5a3010;margin:6px 0 4px">✨ 三关完成</div>
-            <div class="step">BEIJINTU信纸浮现</div>
-            <div class="step">金色文字逐字显现</div>
-            <div class="step">返回梦境初始</div>
+            <div class="step">故事解读信纸弹出</div>
+            <div class="step"><span class="g">握拳/点击</span> 收下</div>
           </div>
-          <div class="img-grid cols2" style="gap:5px">
-            <div class="img-card"><img src="images/木马.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第一章</div><div class="img-cap">第一章·拼图</div></div>
-            <div class="img-card"><img src="images/小提琴.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第二章</div><div class="img-cap">第二章·琴弦</div></div>
-            <div class="img-card"><img src="KONG.png" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第三章</div><div class="img-cap">第三章·孔明灯</div></div>
-            <div class="img-card"><img src="XX.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第三章许愿</div><div class="img-cap">第三章·许愿界面</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-phase">
+            <div class="phase-name">📜 探索</div>
+            <div class="step"><span class="g">张开手</span> 滑动浏览</div>
+            <div class="step">左：旋转木马</div>
+            <div class="step">中：静默音符</div>
+            <div class="step">右：孔明之灯</div>
+            <div class="step"><span class="g">单手握拳</span> 进入关卡</div>
           </div>
-          <div class="flow-list">
-            <div style="font-weight:bold;color:#5a3010;margin-bottom:4px">🎠 第一章·停滞的乐园</div>
-            <div class="step"><span class="gesture">鼠标拖拽</span> 碎片移动</div>
-            <div class="step"><span class="gesture">手势抓取</span> 拼合木马</div>
-            <div class="step">九块碎片归位完成</div>
-            <div style="font-weight:bold;color:#5a3010;margin:6px 0 4px">🎻 第二章·静默的音符</div>
-            <div class="step"><span class="gesture">手指拂过</span> 琴弦弹奏</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-phase">
+            <div class="phase-name">🎠 第一章</div>
+            <div class="step"><span class="g">鼠标/手势</span> 拖拽</div>
+            <div class="step">九块碎片拼合木马</div>
+            <div class="step">星光粒子吸附反馈</div>
+            <div class="step">✅ 停滞的乐园</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-phase">
+            <div class="phase-name">🎻 第二章</div>
+            <div class="step"><span class="g">手指拂过</span> 琴弦</div>
             <div class="step">金色光点引导旋律</div>
-            <div class="step">14音符安眠曲完成</div>
-            <div style="font-weight:bold;color:#5a3010;margin:6px 0 4px">🏮 第三章·孔明之灯</div>
-            <div class="step"><span class="gesture">双手合十</span> 触发许愿</div>
+            <div class="step">十四音符安眠曲</div>
+            <div class="step">✅ 静默的音符</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-phase">
+            <div class="phase-name">🏮 第三章</div>
+            <div class="step"><span class="g">双手合十</span> 许愿</div>
             <div class="step">倒计时点亮孔明灯</div>
-            <div class="step">6盏灯全部点亮通关</div>
+            <div class="step">六盏灯全部飘升</div>
+            <div class="step">✅ 孔明之灯</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-phase">
+            <div class="phase-name">✨ 结局</div>
+            <div class="step">粒子聚拢成文字</div>
+            <div class="step">BEIJINTU信纸浮现</div>
+            <div class="step">金色祝语逐字显现</div>
+            <div class="step">🎉 梦境已圆</div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 3. 核心界面展示 -->
-    <div class="row">
-      <div class="row-label"><div class="row-num">3</div></div>
-      <div class="row-body">
+    <div class="section">
+      <div class="s-num"><div class="s-dot">3</div></div>
+      <div class="s-body">
         <h3>核心界面展示</h3>
-        <div class="img-grid cols4">
-          <div class="img-card"><img src="底图.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">开篇叙事</div><div class="img-cap">🎬 开篇 · 底图信纸漂浮</div></div>
-          <div class="img-card"><img src="画卷.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">画卷主页</div><div class="img-cap">📜 画卷 · 三关探索入口</div></div>
-          <div class="img-card"><img src="images/木马.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第一章</div><div class="img-cap">🎠 第一章 · 拼图归位</div></div>
-          <div class="img-card"><img src="images/小提琴.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第二章</div><div class="img-cap">🎻 第二章 · 琴弦弹奏</div></div>
+        <div class="showcase">
+          <div class="sc-card"><img src="底图.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">开篇界面</div><div class="sc-desc">开篇</div><div class="sc-label">🎬 开篇 · BEIJINTU信纸漂浮</div></div>
+          <div class="sc-card"><img src="images/木马.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第一章</div><div class="sc-desc">第一章</div><div class="sc-label">🎠 第一章 · 木马拼图归位</div></div>
+          <div class="sc-card"><img src="images/小提琴.jpg" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第二章</div><div class="sc-desc">第二章</div><div class="sc-label">🎻 第二章 · 琴弦弹奏旋律</div></div>
+          <div class="sc-card"><img src="KONG.png" alt="" onerror="this.style.display='none'"><div class="img-ph" style="position:absolute;inset:0">第三章</div><div class="sc-desc">第三章</div><div class="sc-label">🏮 第三章 · 孔明灯许愿</div></div>
         </div>
       </div>
     </div>
 
     <!-- 4. 使用场景 -->
-    <div class="row">
-      <div class="row-label"><div class="row-num">4</div></div>
-      <div class="row-body">
+    <div class="section">
+      <div class="s-num"><div class="s-dot">4</div></div>
+      <div class="s-body">
         <h3>使用场景</h3>
         <div class="scene-row">
-          <div class="scene-card"><div class="emoji">🏛️</div><div class="name">艺术展览</div><div class="desc">作为交互装置<br>在展厅中展出<br>摄像头+大屏<br>观众手势体验</div></div>
-          <div class="scene-card"><div class="emoji">💻</div><div class="name">个人电脑</div><div class="desc">浏览器打开网页<br>鼠标拖拽拼图<br>摄像头手势识别<br>双模式自由切换</div></div>
-          <div class="scene-card"><div class="emoji">📱</div><div class="name">平板手机</div><div class="desc">触屏滑动画卷<br>手指拖拽碎片<br>随时随地进入<br>金色梦境世界</div></div>
-          <div class="scene-card"><div class="emoji">🎓</div><div class="name">教学演示</div><div class="desc">手势识别技术<br>交互设计案例<br>数字媒体艺术<br>适合课堂展示</div></div>
-          <div class="scene-card"><div class="emoji">🌐</div><div class="name">在线分享</div><div class="desc">GitHub Pages<br>免费部署上线<br>全球可访问<br>即点即玩</div></div>
+          <div class="scene-card"><div class="emoji">🏛️</div><div class="name">艺术展览</div><div class="desc">交互装置展出<br>摄像头捕捉手势<br>大屏沉浸体验</div></div>
+          <div class="scene-card"><div class="emoji">💻</div><div class="name">个人电脑</div><div class="desc">浏览器即开即用<br>鼠标与手势双模<br>灵活切换操作</div></div>
+          <div class="scene-card"><div class="emoji">📱</div><div class="name">平板手机</div><div class="desc">触屏滑动画卷<br>手指拖拽碎片<br>随时随地体验</div></div>
+          <div class="scene-card"><div class="emoji">🎓</div><div class="name">教学演示</div><div class="desc">手势识别案例<br>数字媒体课程<br>交互设计参考</div></div>
+          <div class="scene-card"><div class="emoji">🌐</div><div class="name">在线分享</div><div class="desc">GitHub Pages<br>免费一键部署<br>全球可访问</div></div>
         </div>
       </div>
     </div>
@@ -165,8 +180,8 @@ body{background:#0d0a06;display:flex;justify-content:center;align-items:center;m
 
   <!-- 底部 -->
   <div class="foot">
-    <span>HTML · CSS · JS · MediaPipe Hands · Web Audio API · Canvas · GitHub Pages</span>
-    <span>© 2026 寻找失落的梦境 · zhouys1227.github.io/mengjing</span>
+    <span>HTML · CSS · JavaScript · MediaPipe Hands · Web Audio API · Canvas · GitHub Pages</span>
+    <span>© 2026 zhouys1227.github.io/mengjing</span>
   </div>
 </div>
 </body>
